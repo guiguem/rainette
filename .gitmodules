@@ -1,3 +1,3 @@
 [submodule "ToolDAQFramework"]
 	path = ToolDAQFramework
-	url = /Users/mguigue/Work/T2K/SourceTree/ToolDAQFramework
+    url=https://gitlab.in2p3.fr/T2K/ToolDAQFramework
