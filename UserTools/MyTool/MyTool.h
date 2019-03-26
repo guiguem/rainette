@@ -17,6 +17,7 @@ class MyTool : public Tool
     bool Finalise();
 
   private:
+    int m_verbose;
 };
 
 #endif
