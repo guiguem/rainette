@@ -17,7 +17,7 @@ set( MyTool_SOURCEFILES
 
 
 set (MyTool_DEP_LIBRARIES
- BaseDataModel
+ BaseDataModel_Rainette
  Store_Rainette
  cppzmq
 )

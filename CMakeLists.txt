@@ -22,4 +22,17 @@ set( Scarab_BUILD_CODEC_YAML OFF CACHE BOOL "No codec" FORCE)
 set( Scarab_BUILD_AUTHENTICATION OFF CACHE BOOL "No auth" FORCE)
 set( Scarab_BUILD_PARAM OFF CACHE BOOL "No param" FORCE)
 
-set( Cicada_ENABLE_KATYDID_NAMESPACE OFF CACHE BOOL "Use Cicada namespace" FORCE)
+#############
+# ToolDAQ
+#############
+
+# subdirectories
+include_directories (BEFORE
+    ${PROJECT_SOURCE_DIR}/UserDataModels/MyDataModel
+    ${PROJECT_SOURCE_DIR}/UserTools/MyTool
+)
+
+add_subdirectory (UserDataModels/MyDataModel)
+add_subdirectory (UserTools/MyTool)
+
+pbuilder_variables_for_parent()

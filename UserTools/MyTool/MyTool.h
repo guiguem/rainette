@@ -5,25 +5,18 @@
 #include <iostream>
 
 #include "Tool.h"
+#include "MyDataModel.h"
 
-class MyTool: public Tool {
+class MyTool : public Tool
+{
 
+  public:
+    MyTool();
+    bool Initialise(std::string configfile, MyDataModel &data);
+    bool Execute();
+    bool Finalise();
 
- public:
-
-  MyTool();
-  bool Initialise(std::string configfile,DataModel &data);
-  bool Execute();
-  bool Finalise();
-
-
- private:
-
-
-
-
-
+  private:
 };
-
 
 #endif
