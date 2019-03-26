@@ -1,7 +1,5 @@
 #include "MyTool.h"
 
-MyTool::MyTool() : Tool() {}
-
 bool MyTool::Initialise(std::string configfile, MyDataModel &data)
 {
 

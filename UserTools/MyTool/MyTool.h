@@ -11,7 +11,6 @@ class MyTool : public Tool
 {
 
   public:
-    MyTool();
     bool Initialise(std::string configfile, MyDataModel &data);
     bool Execute();
     bool Finalise();

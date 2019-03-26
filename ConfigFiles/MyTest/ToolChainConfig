@@ -21,7 +21,7 @@ service_publish_sec 5
 service_kick_sec 60
 
 ##### Tools To Add #####
-Tools_File ConfigFiles/MyTest/ToolsConfig
+Tools_File ../ConfigFiles/MyTest/ToolsConfig
 
 ##### Run Type #####
 Inline 3

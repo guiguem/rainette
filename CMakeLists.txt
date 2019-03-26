@@ -22,17 +22,22 @@ set( Scarab_BUILD_CODEC_YAML OFF CACHE BOOL "No codec" FORCE)
 set( Scarab_BUILD_AUTHENTICATION OFF CACHE BOOL "No auth" FORCE)
 set( Scarab_BUILD_PARAM OFF CACHE BOOL "No param" FORCE)
 
+
+# require C++14
+set_option( USE_CPP11 FALSE )
+set_option( USE_CPP14 TRUE )
+
 #############
 # ToolDAQ
 #############
 
 # subdirectories
-include_directories (BEFORE
-    ${PROJECT_SOURCE_DIR}/UserDataModels/MyDataModel
-    ${PROJECT_SOURCE_DIR}/UserTools/MyTool
-)
+# include_directories (BEFORE
+#     ${PROJECT_SOURCE_DIR}/UserDataModels/MyDataModel
+#     ${PROJECT_SOURCE_DIR}/UserTools/MyTool
+# )
 
-add_subdirectory (UserDataModels/MyDataModel)
-add_subdirectory (UserTools/MyTool)
+# add_subdirectory (UserDataModels/MyDataModel)
+# add_subdirectory (UserTools/MyTool)
 
-pbuilder_variables_for_parent()
+# pbuilder_variables_for_parent()
