@@ -32,12 +32,16 @@ set_option( USE_CPP14 TRUE )
 #############
 
 # subdirectories
-# include_directories (BEFORE
-#     ${PROJECT_SOURCE_DIR}/UserDataModels/MyDataModel
-#     ${PROJECT_SOURCE_DIR}/UserTools/MyTool
-# )
+include_directories (BEFORE
+    ${PROJECT_SOURCE_DIR}/UserDataModels/MyDataModel
+    ${PROJECT_SOURCE_DIR}/UserTools/MyTool
+    ${PROJECT_SOURCE_DIR}/UserTools/Wrench
+    ${PROJECT_SOURCE_DIR}/Applications
+)
 
-# add_subdirectory (UserDataModels/MyDataModel)
-# add_subdirectory (UserTools/MyTool)
+add_subdirectory (UserDataModels/MyDataModel)
+add_subdirectory (UserTools/MyTool)
+add_subdirectory (UserTools/Wrench)
+add_subdirectory (Applications)
 
-# pbuilder_variables_for_parent()
+pbuilder_variables_for_parent()

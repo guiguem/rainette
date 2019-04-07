@@ -1,2 +1,3 @@
-DummyTool DummyTool  ../ConfigFiles/MyTest/MyToolConfig
+#MyTool MyTool  ../ConfigFiles/MyTest/MyToolConfig
+# DummyTool DummyTool ../ConfigFiles/MyTest/MyToolConfig
 Logger Logger ../ConfigFiles/MyTest/LoggerConfig

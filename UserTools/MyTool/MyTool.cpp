@@ -1,11 +1,14 @@
 #include "MyTool.h"
 
-bool MyTool::Initialise(std::string configfile, MyDataModel &data)
+void MyTool::makeNoise() { std::cerr << "MyTool: " << m_x << "\n"; }
+
+bool MyTool::Initialise(std::string configfile, DataModel &data)
 {
 
     if (configfile != "")
         m_variables.Initialise(configfile);
-    else {
+    else
+    {
         exit(1);
     }
     //m_variables.Print();
