@@ -16,9 +16,9 @@ class MyTool : public Tool::Registrar<MyTool>
     void makeNoise(); // { std::cerr << "Cat: " << m_x << "\n"; }
 
   public:
-    bool Initialise(std::string configfile, DataModel &data);
-    bool Execute();
-    bool Finalise();
+    bool Initialise(std::string configfile, DataModel &data) override;
+    bool Execute() override;
+    bool Finalise() override;
 
   private:
     int m_verbose;

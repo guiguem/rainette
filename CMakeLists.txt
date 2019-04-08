@@ -26,6 +26,7 @@ set( Scarab_BUILD_PARAM OFF CACHE BOOL "No param" FORCE)
 # require C++14
 set_option( USE_CPP11 FALSE )
 set_option( USE_CPP14 TRUE )
+set(CMAKE_CXX_STANDARD 14)
 
 #############
 # ToolDAQ
@@ -33,13 +34,13 @@ set_option( USE_CPP14 TRUE )
 
 # subdirectories
 include_directories (BEFORE
-    ${PROJECT_SOURCE_DIR}/UserDataModels/MyDataModel
+    # ${PROJECT_SOURCE_DIR}/UserDataModels/MyDataModel
     ${PROJECT_SOURCE_DIR}/UserTools/MyTool
     ${PROJECT_SOURCE_DIR}/UserTools/Wrench
     ${PROJECT_SOURCE_DIR}/Applications
 )
 
-add_subdirectory (UserDataModels/MyDataModel)
+# add_subdirectory (UserDataModels/MyDataModel)
 add_subdirectory (UserTools/MyTool)
 add_subdirectory (UserTools/Wrench)
 add_subdirectory (Applications)

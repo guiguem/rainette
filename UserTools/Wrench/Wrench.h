@@ -7,9 +7,9 @@ class Wrench : public Tool::Registrar<Wrench>
 
     void makeNoise(); // { std::cerr << "Cat: " << m_x << "\n"; }
 
-    bool Initialise(std::string configfile, DataModel &data);
-    bool Execute();
-    bool Finalise();
+    bool Initialise(std::string configfile, DataModel &data) override;
+    bool Execute() override;
+    bool Finalise() override;
 
   private:
     std::string m_x;
