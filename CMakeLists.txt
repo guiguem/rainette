@@ -36,12 +36,14 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories (BEFORE
     # ${PROJECT_SOURCE_DIR}/UserDataModels/MyDataModel
     ${PROJECT_SOURCE_DIR}/UserTools/MyTool
+    ${PROJECT_SOURCE_DIR}/UserTools/TextReader
     ${PROJECT_SOURCE_DIR}/UserTools/Wrench
     ${PROJECT_SOURCE_DIR}/Applications
 )
 
 # add_subdirectory (UserDataModels/MyDataModel)
 add_subdirectory (UserTools/MyTool)
+add_subdirectory (UserTools/TextReader)
 add_subdirectory (UserTools/Wrench)
 add_subdirectory (Applications)
 
