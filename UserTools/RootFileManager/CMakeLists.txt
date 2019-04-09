@@ -24,16 +24,11 @@ set (RootFileManager_DEP_LIBRARIES
 
 
 ##################################  ROOT  ######################################
-SET( ROOT_FOUND FALSE )
-MARK_AS_ADVANCED( ROOT_FOUND )
+# You need to tell CMake where to find the ROOT installation. This can be done in a number of ways:
+#   - ROOT built with classic configure/make use the provided $ROOTSYS/etc/cmake/FindROOT.cmake
+#   - ROOT built with CMake. Add in CMAKE_PREFIX_PATH the installation prefix for ROOT
+list(APPEND CMAKE_PREFIX_PATH $ENV{ROOTSYS})
 
-# Threads library is needed for root
-#FIND_PACKAGE( Threads REQUIRED)
-
-# set ROOTSYS for running root-config
-IF( DEFINED ROOT_HOME )
-    SET( ENV{ROOTSYS} "${ROOT_HOME}" )
-ENDIF()
 
 ##################################################
 
