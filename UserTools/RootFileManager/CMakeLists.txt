@@ -22,6 +22,17 @@ set (RootFileManager_DEP_LIBRARIES
  cppzmq
 )
 
+
+##################################  ROOT  ######################################
+if ( NOT DEFINED ENV{ROOTSYS} )
+  cmessage(FATAL_ERROR "$ROOTSYS is not defined, please set up root first.")
+else()
+  cmessage(STATUS "Using ROOT installed at $ENV{ROOTSYS}")
+  set(CMAKE_ROOTSYS $ENV{ROOTSYS})
+endif()
+
+##################################################
+
 # set( STORE_LINKDEF_HEADERFILE LinkDef/ CoreLinkDef.h )
 # set( STORE_SOURCEFILES ${STORE_SOURCEFILES} ${CMAKE_CURRENT_BINARY_DIR}/ CoreDict.cxx )
 # set( STORE_DICT_PCMFILE ${CMAKE_CURRENT_BINARY_DIR}/ CoreDict_rdict.pcm )
@@ -33,4 +44,5 @@ set (RootFileManager_DEP_LIBRARIES
 
 pbuilder_library( RootFileManager RootFileManager_SOURCEFILES RootFileManager_DEP_LIBRARIES )
 pbuilder_install_headers( ${RootFileManager_HEADERFILES} )
+
 
