@@ -43,6 +43,7 @@ include_directories (BEFORE
 # add_subdirectory (UserDataModels/MyDataModel)
 add_subdirectory (UserTools/MyTool)
 add_subdirectory (UserTools/Wrench)
+add_subdirectory (UserTools/RootFileManager)
 add_subdirectory (Applications)
 
 pbuilder_variables_for_parent()
