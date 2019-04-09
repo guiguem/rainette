@@ -24,12 +24,16 @@ set (RootFileManager_DEP_LIBRARIES
 
 
 ##################################  ROOT  ######################################
-if ( NOT DEFINED ENV{ROOTSYS} )
-  cmessage(FATAL_ERROR "$ROOTSYS is not defined, please set up root first.")
-else()
-  cmessage(STATUS "Using ROOT installed at $ENV{ROOTSYS}")
-  set(CMAKE_ROOTSYS $ENV{ROOTSYS})
-endif()
+SET( ROOT_FOUND FALSE )
+MARK_AS_ADVANCED( ROOT_FOUND )
+
+# Threads library is needed for root
+#FIND_PACKAGE( Threads REQUIRED)
+
+# set ROOTSYS for running root-config
+IF( DEFINED ROOT_HOME )
+    SET( ENV{ROOTSYS} "${ROOT_HOME}" )
+ENDIF()
 
 ##################################################
 
