@@ -24,14 +24,10 @@ set (RootFileManager_DEP_LIBRARIES
 
 
 ##################################  ROOT  ######################################
-find_package (ROOT)
-if (ROOT_FOUND)
-    pbuilder_add_ext_libraries (${ROOT_LIBRARIES})
-    message(STATUS "ROOT found!")
-else (ROOT_FOUND)
-    message(FATAL "Unable to find ROOT")
-endif (ROOT_FOUND)
-include_directories (${ROOT_INCLUDE_DIR})
+# You need to tell CMake where to find the ROOT installation. This can be done in a number of ways:
+#   - ROOT built with classic configure/make use the provided $ROOTSYS/etc/cmake/FindROOT.cmake
+#   - ROOT built with CMake. Add in CMAKE_PREFIX_PATH the installation prefix for ROOT
+list(APPEND CMAKE_PREFIX_PATH $ENV{ROOTSYS})
 
 
 ##################################################
