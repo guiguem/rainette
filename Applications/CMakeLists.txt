@@ -11,7 +11,7 @@ set( lib_dependencies
     ToolChain_Rainette
     DummyTool_Rainette
     # master_library
-    Wrenches
+    # Wrenches
     MyTool
     Logger_Rainette
     DummyTool_Rainette
