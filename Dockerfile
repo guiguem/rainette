@@ -22,7 +22,6 @@ FROM rainette_common as rainette_done
 
 COPY Applications /tmp_source/Applications
 COPY cmake /tmp_source/cmake
-COPY scarab /tmp_source/scarab
 COPY ToolDAQFramework /tmp_source/ToolDAQFramework
 COPY CMakeLists.txt /tmp_source/CMakeLists.txt
 COPY UserTools /tmp_source/UserTools
