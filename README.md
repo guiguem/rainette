@@ -55,10 +55,16 @@ First login to Gitlab:
 docker login gitlab-registry.in2p3.fr
 ```
 
-Inside the Rainette folder, run:
+Inside the Rainette folder, make sure your have all the submodules:
 
 ```bash
-docker build -i rainette .
+git submodule update --init --recursive
+````
+
+and then run:
+
+```bash
+docker build -t rainette .
 ```
 
 This will install the software inside the container and produce a `rainette` image.
