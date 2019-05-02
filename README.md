@@ -49,10 +49,22 @@ source /usr/local/t2k/rainette/v0.0.1/setup.sh
 ### Create the image locally
 
 You can build a Docker image by using your local cloned repository of Rainette.
-Inside the Rainette folder, run:
+First login to Gitlab:
 
 ```bash
-docker build -i rainette .
+docker login gitlab-registry.in2p3.fr
+```
+
+Inside the Rainette folder, make sure your have all the submodules:
+
+```bash
+git submodule update --init --recursive
+````
+
+and then run:
+
+```bash
+docker build -t rainette .
 ```
 
 This will install the software inside the container and produce a `rainette` image.
