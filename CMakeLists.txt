@@ -37,6 +37,7 @@ include_directories (BEFORE
     # ${PROJECT_SOURCE_DIR}/UserDataModels/MyDataModel
     ${PROJECT_SOURCE_DIR}/UserTools/MyTool
     ${PROJECT_SOURCE_DIR}/UserTools/Wrench
+    ${PROJECT_SOURCE_DIR}/UserTools/RootFileManager
     ${PROJECT_SOURCE_DIR}/Applications
 )
 

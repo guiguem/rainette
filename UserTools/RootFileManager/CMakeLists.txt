@@ -1,6 +1,6 @@
 # CMakeLists for  Core
-# Author: N. Oblath
-# Date: Jan 15, 2018
+# Author: C. Riccio
+# Date: May 2, 2019
 
 
 set( RootFileManager_DICT_HEADERFILES

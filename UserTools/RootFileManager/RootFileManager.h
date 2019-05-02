@@ -3,6 +3,8 @@
 
 #include <string>
 #include <iostream>
+#include <TFile.h>
+#include <TH1.h>
 
 #include "Tool.h"
 
@@ -21,6 +23,7 @@ class RootFileManager : public Tool::Registrar<RootFileManager>
   private:
     int m_verbose;
     std::string m_x;
+    TFile* foutput;
 
 };
 

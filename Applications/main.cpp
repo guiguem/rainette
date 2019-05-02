@@ -1,6 +1,7 @@
 #include <string>
 #include "ToolChain.h"
 #include "DummyTool.h"
+#include "RootFileManager.h"
 #include <iostream>
 
 int main(int argc, char* argv[]){
@@ -14,7 +15,6 @@ int main(int argc, char* argv[]){
     std::cout << "Done here" << std::endl;
   
 }
-
 
 // #include <iostream>
 // #include <string>
