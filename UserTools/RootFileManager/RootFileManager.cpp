@@ -3,18 +3,17 @@
 bool RootFileManager::Initialise(std::string configfile, DataModel &data)
 {
 
-  foutput = new TFile("output.root","NEW"); 
-
   if (configfile != "")
     m_variables.Initialise(configfile);
   else
   {
     exit(1);
   }
-  //m_variables.Print();
+  m_variables.Print();
+  std::string outpath; 
+  m_variables.Get("outpath",outpath);
 
-  m_data = &data;
-  m_variables.Get("verbose", m_verbose);
+  foutput = new TFile(outpath.c_str(),"RECREATE");
 
   return true;
 }
