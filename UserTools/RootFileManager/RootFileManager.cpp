@@ -24,6 +24,7 @@ bool RootFileManager::Execute()
 
   TH1D* htest = new TH1D("htest","htest",100,0,0);
   htest->FillRandom("gaus",1000);
+  foutput->cd();
   htest->Write();
 
   m_data->Log->Log("test 2", 2, m_verbose);
