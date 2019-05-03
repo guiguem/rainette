@@ -9,7 +9,9 @@ bool RootFileManager::Initialise(std::string configfile, DataModel &data)
   {
     exit(1);
   }
-  m_variables.Print();
+  m_data = &data;
+
+  //m_variables.Print();
   std::string outpath; 
   m_variables.Get("outpath",outpath);
 
