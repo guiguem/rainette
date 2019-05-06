@@ -28,6 +28,20 @@ set_option( USE_CPP11 FALSE )
 set_option( USE_CPP14 TRUE )
 set(CMAKE_CXX_STANDARD 14)
 
+##################################  ROOT  ######################################
+
+find_package (ROOT)
+if (ROOT_FOUND)
+    pbuilder_add_ext_libraries (${ROOT_LIBRARIES})
+    message(STATUS "ROOT found!")
+else (ROOT_FOUND)
+    message(FATAL "Unable to find ROOT")
+endif (ROOT_FOUND)
+include_directories (${ROOT_INCLUDE_DIR})
+
+
+##################### ROOT END #############################
+
 #############
 # ToolDAQ
 #############

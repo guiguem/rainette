@@ -22,20 +22,6 @@ set (RootFileManager_DEP_LIBRARIES
  cppzmq
 )
 
-
-##################################  ROOT  ######################################
-find_package (ROOT)
-if (ROOT_FOUND)
-    pbuilder_add_ext_libraries (${ROOT_LIBRARIES})
-    message(STATUS "ROOT found!")
-else (ROOT_FOUND)
-    message(FATAL "Unable to find ROOT")
-endif (ROOT_FOUND)
-include_directories (${ROOT_INCLUDE_DIR})
-
-
-##################################################
-
 # set( STORE_LINKDEF_HEADERFILE LinkDef/ CoreLinkDef.h )
 # set( STORE_SOURCEFILES ${STORE_SOURCEFILES} ${CMAKE_CURRENT_BINARY_DIR}/ CoreDict.cxx )
 # set( STORE_DICT_PCMFILE ${CMAKE_CURRENT_BINARY_DIR}/ CoreDict_rdict.pcm )
