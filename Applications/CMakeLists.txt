@@ -8,10 +8,8 @@
 
 set( lib_dependencies 
     ToolChain_Rainette
-    DummyTool_Rainette
     Logger_Rainette
     DummyTool_Rainette
-    Wrenches
     MyTool
     TextReader
 )
