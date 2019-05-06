@@ -2,11 +2,14 @@
 
 ## Installation instructions
 
-- mkdir build
-- cd build
-- cmake ..
-- make -j3
-- make install
+Inside the Rainette source code folder, run the following commands:
+
+```bash
+mkdir build
+cd build
+cmake ..
+make install
+```
 
 ## Using Docker
 
@@ -120,6 +123,13 @@ cmake ..
 make -j3 install
 ```
 
+You will need to update the binaries and libraries paths:
+
+```bash
+export PATH=$(pwd)/bin:$PATH
+export LD_LIBRARY_PATH=$(pwd)/lib64:$(pwd)/lib:$LD_LIBRARY_PATH
+```
+
 You can then edit the code from inside or outside the container and rebuild using
 
 ```bash
@@ -127,3 +137,13 @@ make -j3 install
 ```
 
 without exiting the container.
+
+## Running examples
+
+Rainette and ToolDAQFramework are based on configuration files.
+The Rainette ones are located in ConfigFiles.
+You can test the software by running in the top directory:
+
+```bash
+main ConfigFiles/MyTest/ToolChainConfig
+```

@@ -14,9 +14,6 @@ pbuilder_prepare_project()
 
 pbuilder_add_submodule( ToolDAQFramework ToolDAQFramework )
 
-
-MESSAGE (STATUS "HEREHEREH" ${EXTERNAL_LIBRARIES})
-
 set( Scarab_BUILD_CODEC_JSON OFF CACHE BOOL "No coded" FORCE)
 set( Scarab_BUILD_CODEC_YAML OFF CACHE BOOL "No codec" FORCE)
 set( Scarab_BUILD_AUTHENTICATION OFF CACHE BOOL "No auth" FORCE)
