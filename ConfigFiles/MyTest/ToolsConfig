@@ -1,4 +1,5 @@
-#MyTool MyTool  ../ConfigFiles/MyTest/MyToolConfig
-# DummyTool DummyTool ../ConfigFiles/MyTest/MyToolConfig
-# Logger Logger ../ConfigFiles/MyTest/LoggerConfig
-RootFileManager RootFileManager ../ConfigFiles/MyTest/RootFileManagerConfig
+#MyTool MyTool  ConfigFiles/MyTest/MyToolConfig
+# DummyTool DummyTool ConfigFiles/MyTest/MyToolConfig
+# Logger Logger ConfigFiles/MyTest/LoggerConfig
+RootFileManager RootFileManager ConfigFiles/MyTest/RootFileManagerConfig
+TextReader TextReader ConfigFiles/MyTest/TextReader

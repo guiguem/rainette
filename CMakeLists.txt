@@ -14,9 +14,6 @@ pbuilder_prepare_project()
 
 pbuilder_add_submodule( ToolDAQFramework ToolDAQFramework )
 
-
-MESSAGE (STATUS "HEREHEREH" ${EXTERNAL_LIBRARIES})
-
 set( Scarab_BUILD_CODEC_JSON OFF CACHE BOOL "No coded" FORCE)
 set( Scarab_BUILD_CODEC_YAML OFF CACHE BOOL "No codec" FORCE)
 set( Scarab_BUILD_AUTHENTICATION OFF CACHE BOOL "No auth" FORCE)
@@ -50,6 +47,7 @@ include_directories (${ROOT_INCLUDE_DIR})
 include_directories (BEFORE
     # ${PROJECT_SOURCE_DIR}/UserDataModels/MyDataModel
     ${PROJECT_SOURCE_DIR}/UserTools/MyTool
+    ${PROJECT_SOURCE_DIR}/UserTools/TextReader
     ${PROJECT_SOURCE_DIR}/UserTools/Wrench
     ${PROJECT_SOURCE_DIR}/UserTools/RootFileManager
     ${PROJECT_SOURCE_DIR}/Applications
@@ -57,6 +55,7 @@ include_directories (BEFORE
 
 # add_subdirectory (UserDataModels/MyDataModel)
 add_subdirectory (UserTools/MyTool)
+add_subdirectory (UserTools/TextReader)
 add_subdirectory (UserTools/Wrench)
 add_subdirectory (UserTools/RootFileManager)
 add_subdirectory (Applications)
