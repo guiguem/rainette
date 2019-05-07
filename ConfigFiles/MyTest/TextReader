@@ -1,0 +1,4 @@
+# Dummy config file
+
+verbose 1
+filename afile.txt
