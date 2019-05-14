@@ -1,3 +1,7 @@
 [submodule "ToolDAQFramework"]
 	path = ToolDAQFramework
     url=https://gitlab.in2p3.fr/T2K/ToolDAQFramework
+[submodule "CosmicCrisp"]
+	path = CosmicCrisp
+	url = https://gitlab.in2p3.fr/T2K/CosmicCrisp
+	branch = develop

@@ -13,6 +13,7 @@ include( PackageBuilder )
 pbuilder_prepare_project()
 
 pbuilder_add_submodule( ToolDAQFramework ToolDAQFramework )
+pbuilder_add_submodule( CosmicCrisp CosmicCrisp )
 
 set( Scarab_BUILD_CODEC_JSON OFF CACHE BOOL "No coded" FORCE)
 set( Scarab_BUILD_CODEC_YAML OFF CACHE BOOL "No codec" FORCE)
@@ -31,7 +32,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 # subdirectories
 include_directories (BEFORE
-    # ${PROJECT_SOURCE_DIR}/UserDataModels/MyDataModel
+    ${PROJECT_SOURCE_DIR}/UserTools/CosmicCrispConverter
     ${PROJECT_SOURCE_DIR}/UserTools/MyTool
     ${PROJECT_SOURCE_DIR}/UserTools/TextReader
     ${PROJECT_SOURCE_DIR}/UserTools/Wrench
@@ -39,6 +40,7 @@ include_directories (BEFORE
 )
 
 # add_subdirectory (UserDataModels/MyDataModel)
+add_subdirectory (UserTools/CosmicCrispConverter)
 add_subdirectory (UserTools/MyTool)
 add_subdirectory (UserTools/TextReader)
 add_subdirectory (UserTools/Wrench)
