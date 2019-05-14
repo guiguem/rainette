@@ -1,8 +1,6 @@
-#include "MyTool.h"
+#include "TextReader.h"
 
-void MyTool::makeNoise() { std::cerr << "MyTool: " << m_x << "\n"; }
-
-bool MyTool::Initialise(std::string configfile, DataModel &data)
+bool TextReader::Initialise(std::string configfile, DataModel &data)
 {
 
     if (configfile != "")
@@ -15,20 +13,26 @@ bool MyTool::Initialise(std::string configfile, DataModel &data)
 
     m_data = &data;
     m_variables.Get("verbose", m_verbose);
+    m_variables.Get("filename", m_filename);
+
+    m_file.open(m_filename.c_str());
 
     return true;
 }
 
-bool MyTool::Execute()
+bool TextReader::Execute()
 {
 
     m_data->Log->Log("test 2", 2, m_verbose);
 
+    m_file << "Writing this to a file.\n";
+
     return true;
 }
 
-bool MyTool::Finalise()
+bool TextReader::Finalise()
 {
 
+    m_file.close();
     return true;
 }

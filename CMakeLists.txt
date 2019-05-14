@@ -14,12 +14,34 @@ pbuilder_prepare_project()
 
 pbuilder_add_submodule( ToolDAQFramework ToolDAQFramework )
 
-
-MESSAGE (STATUS "HEREHEREH" ${EXTERNAL_LIBRARIES})
-
 set( Scarab_BUILD_CODEC_JSON OFF CACHE BOOL "No coded" FORCE)
 set( Scarab_BUILD_CODEC_YAML OFF CACHE BOOL "No codec" FORCE)
 set( Scarab_BUILD_AUTHENTICATION OFF CACHE BOOL "No auth" FORCE)
 set( Scarab_BUILD_PARAM OFF CACHE BOOL "No param" FORCE)
 
-set( Cicada_ENABLE_KATYDID_NAMESPACE OFF CACHE BOOL "Use Cicada namespace" FORCE)
+
+# require C++14
+set_option( USE_CPP11 FALSE )
+set_option( USE_CPP14 TRUE )
+set(CMAKE_CXX_STANDARD 14)
+
+#############
+# ToolDAQ
+#############
+
+# subdirectories
+include_directories (BEFORE
+    # ${PROJECT_SOURCE_DIR}/UserDataModels/MyDataModel
+    ${PROJECT_SOURCE_DIR}/UserTools/MyTool
+    ${PROJECT_SOURCE_DIR}/UserTools/TextReader
+    ${PROJECT_SOURCE_DIR}/UserTools/Wrench
+    ${PROJECT_SOURCE_DIR}/Applications
+)
+
+# add_subdirectory (UserDataModels/MyDataModel)
+add_subdirectory (UserTools/MyTool)
+add_subdirectory (UserTools/TextReader)
+add_subdirectory (UserTools/Wrench)
+add_subdirectory (Applications)
+
+pbuilder_variables_for_parent()

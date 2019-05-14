@@ -1,25 +1,15 @@
-# CMakeLists for  Core
-# Author: N. Oblath
-# Date: Jan 15, 2018
+# CMakeLists for  ToolChain
+# Author: M. Guigue
+# Date: Jan 15, 2019
 
-
-set( MyTool_DICT_HEADERFILES
-    MyTool.h
+set (WRENCHES_HEADERS
+    Wrench.h
 )
-
-set( MyTool_HEADERFILES
-    ${MyTool_DICT_HEADERFILES}
+set (WRENCHES_SOURCES
+    Wrench.cpp
 )
-
-set( MyTool_SOURCEFILES
-    MyTool.cpp
-)
-
-
-set (MyTool_DEP_LIBRARIES
- BaseDataModel_Rainette
- Store_Rainette
- cppzmq
+set (WRENCHES_DEP_LIBRARIES
+    Store_Rainette
 )
 
 # set( STORE_LINKDEF_HEADERFILE LinkDef/ CoreLinkDef.h )
@@ -31,6 +21,7 @@ set (MyTool_DEP_LIBRARIES
 # ROOT_GENERATE_DICTIONARY(  CoreDict ${STORE_DICT_HEADERFILES} LINKDEF ${STORE_LINKDEF_HEADERFILE} )
 # pbuilder_install_files( ${LIB_INSTALL_DIR} ${STORE_DICT_PCMFILE} )
 
-pbuilder_library( MyTool MyTool_SOURCEFILES MyTool_DEP_LIBRARIES )
-pbuilder_install_headers( ${MyTool_HEADERFILES} )
-
+# pbuilder_library( ToolChain TOOLCHAIN_SOURCEFILES TOOLCHAIN_DEP_LIBRARIES )
+# pbuilder_install_headers( ${TOOLCHAIN_HEADERFILES} )
+pbuilder_library( Wrenches WRENCHES_SOURCES WRENCHES_DEP_LIBRARIES )
+pbuilder_install_headers( ${WRENCHES_HEADERS} )

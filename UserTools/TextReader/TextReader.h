@@ -8,12 +8,10 @@
 // #include "MyDataModel.h"
 class MyDataModel;
 
-class MyTool : public Tool::Registrar<MyTool>
+class TextReader : public Tool::Registrar<TextReader>
 {
   public:
-    MyTool(std::string x) : m_x(x) {}
-
-    void makeNoise(); // { std::cerr << "Cat: " << m_x << "\n"; }
+    TextReader(std::string x) : m_x(x) {}
 
   public:
     bool Initialise(std::string configfile, DataModel &data) override;
@@ -23,7 +21,8 @@ class MyTool : public Tool::Registrar<MyTool>
   private:
     int m_verbose;
     std::string m_x;
-
+    std::string m_filename;
+    std::ofstream m_file;
 };
 
 #endif
