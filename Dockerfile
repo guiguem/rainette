@@ -1,4 +1,4 @@
-FROM gitlab-registry.in2p3.fr/t2k/applecrate:v0.0.2 as rainette_common
+FROM gitlab-registry.in2p3.fr/t2k/applecrate:v0.0.3 as rainette_common
 
 ARG build_type=Release
 ENV RAINETTE_TAG=v0.0.1
@@ -15,7 +15,6 @@ RUN mkdir -p $RAINETTE_BUILD_PREFIX &&\
     echo 'export LD_LIBRARY_PATH=$RAINETTE_BUILD_PREFIX/lib64:$RAINETTE_BUILD_PREFIX/lib:$LD_LIBRARY_PATH' >> setup.sh &&\
     echo 'export PYTHONPATH=$RAINETTE_BUILD_PREFIX/$(python -m site --user-site | sed "s%$(python -m site --user-base)%%"):$PYTHONPATH' >> setup.sh &&\
     /bin/true
-
 
 # ########################
 FROM rainette_common as rainette_done
@@ -44,6 +43,6 @@ RUN source $COMMON_BUILD_PREFIX/setup.sh &&\
     /bin/true
 
 # ########################
-# FROM rainette_common
+FROM rainette_common
 
-# COPY --from=rainette_done $RAINETTE_BUILD_PREFIX $RAINETTE_BUILD_PREFIX
+COPY --from=rainette_done $RAINETTE_BUILD_PREFIX $RAINETTE_BUILD_PREFIX
