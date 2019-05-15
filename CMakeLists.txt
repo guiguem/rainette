@@ -7,18 +7,22 @@ list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/ToolDAQFramework/src/vendor
 list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/ToolDAQFramework/src/vendor/cppzmq/cmake )
 list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake )
 
-# list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/Cicada/Scarab/cmake )
 include( PackageBuilder )
 
 pbuilder_prepare_project()
 
+#############
+# Submodules
+#############
+
 pbuilder_add_submodule( ToolDAQFramework ToolDAQFramework )
+set( CosmicCrisp_ENABLE_EXECUTABLES OFF )
+pbuilder_add_submodule( CosmicCrisp CosmicCrisp )
 
 set( Scarab_BUILD_CODEC_JSON OFF CACHE BOOL "No coded" FORCE)
 set( Scarab_BUILD_CODEC_YAML OFF CACHE BOOL "No codec" FORCE)
 set( Scarab_BUILD_AUTHENTICATION OFF CACHE BOOL "No auth" FORCE)
 set( Scarab_BUILD_PARAM OFF CACHE BOOL "No param" FORCE)
-
 
 # require C++14
 set_option( USE_CPP11 FALSE )
@@ -40,12 +44,12 @@ include_directories (${ROOT_INCLUDE_DIR})
 ##################### ROOT END #############################
 
 #############
-# ToolDAQ
+# Rainette
 #############
 
 # subdirectories
 include_directories (BEFORE
-    # ${PROJECT_SOURCE_DIR}/UserDataModels/MyDataModel
+    ${PROJECT_SOURCE_DIR}/UserTools/CosmicCrispConverter
     ${PROJECT_SOURCE_DIR}/UserTools/MyTool
     ${PROJECT_SOURCE_DIR}/UserTools/TextReader
     ${PROJECT_SOURCE_DIR}/UserTools/Wrench
@@ -54,6 +58,7 @@ include_directories (BEFORE
 )
 
 # add_subdirectory (UserDataModels/MyDataModel)
+add_subdirectory (UserTools/CosmicCrispConverter)
 add_subdirectory (UserTools/MyTool)
 add_subdirectory (UserTools/TextReader)
 add_subdirectory (UserTools/Wrench)
