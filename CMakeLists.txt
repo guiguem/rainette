@@ -7,12 +7,16 @@ list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/ToolDAQFramework/src/vendor
 list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/ToolDAQFramework/src/vendor/cppzmq/cmake )
 list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake )
 
-# list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/Cicada/Scarab/cmake )
 include( PackageBuilder )
 
 pbuilder_prepare_project()
 
+#############
+# Submodules
+#############
+
 pbuilder_add_submodule( ToolDAQFramework ToolDAQFramework )
+set( CosmicCrisp_ENABLE_EXECUTABLES OFF )
 pbuilder_add_submodule( CosmicCrisp CosmicCrisp )
 
 set( Scarab_BUILD_CODEC_JSON OFF CACHE BOOL "No coded" FORCE)
@@ -20,14 +24,13 @@ set( Scarab_BUILD_CODEC_YAML OFF CACHE BOOL "No codec" FORCE)
 set( Scarab_BUILD_AUTHENTICATION OFF CACHE BOOL "No auth" FORCE)
 set( Scarab_BUILD_PARAM OFF CACHE BOOL "No param" FORCE)
 
-
 # require C++14
 set_option( USE_CPP11 FALSE )
 set_option( USE_CPP14 TRUE )
 set(CMAKE_CXX_STANDARD 14)
 
 #############
-# ToolDAQ
+# Rainette
 #############
 
 # subdirectories
