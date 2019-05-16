@@ -17,24 +17,52 @@ bool RootFileManager::Initialise(std::string configfile, DataModel &data)
 
   foutput = new TFile(outpath.c_str(),"RECREATE");
 
+  TTree * tree=new TTree("RawData","RawData");
+
+  tree->Branch("evt",&m_data->evt,"evt/L");
+  tree->Branch("scintID",&localcard.scintID,"scintID/I");
+  tree->Branch("Time",&localcard.Time);
+
+  m_data->AddTTree("RawData",tree);
+
   return true;
 }
 
 bool RootFileManager::Execute()
 {
 
-  TH1D* htest = new TH1D("htest","htest",100,0,0);
-  htest->FillRandom("gaus",1000);
-  foutput->cd();
-  htest->Write();
+ m_data->evt+=1;
 
-  m_data->Log->Log("test 2", 2, m_verbose);
+  for(int card=0;card<m_data->Cards.size();card++){
+    
+    localcard.scintID=m_data->Cards.at(card)->scintID;
+    
+    localcard.Time.clear();
+    localcard.Time=m_data->Cards.at(card)->Time;
+
+    delete m_data->Cards.at(card);
+    m_data->Cards.at(card)=0;
+
+    m_data->GetTTree("RawData")->Fill();    
+  }
+
+  m_data->Cards.clear();
 
   return true;
 }
 
 bool RootFileManager::Finalise()
 {
+
+  m_data->GetTTree("RawData")->Write();
+  
   foutput->Close();
+  
+  m_data->DeleteTTree("RawData");
+    
+  delete foutput;
+  foutput=0;
+  
   return true;
+
 }

@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 #include <TFile.h>
-#include <TH1.h>
+#include "TTree.h"
 
 #include "Tool.h"
 
@@ -24,6 +24,7 @@ class RootFileManager : public Tool::Registrar<RootFileManager>
     int m_verbose;
     std::string m_x;
     TFile* foutput;
+    CardData localcard;
 
 };
 
