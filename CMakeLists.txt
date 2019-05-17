@@ -49,6 +49,7 @@ include_directories (${ROOT_INCLUDE_DIR})
 
 # subdirectories
 include_directories (BEFORE
+    ${PROJECT_SOURCE_DIR}/RainetteDataModels
     ${PROJECT_SOURCE_DIR}/UserTools/CosmicCrispConverter
     ${PROJECT_SOURCE_DIR}/UserTools/MyTool
     ${PROJECT_SOURCE_DIR}/UserTools/TextReader

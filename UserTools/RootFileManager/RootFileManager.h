@@ -7,8 +7,9 @@
 #include "TTree.h"
 
 #include "Tool.h"
+#include "RainetteDataModel.h"
 
-class MyDataModel;
+class RainetteDataModel;
 
 class RootFileManager : public Tool::Registrar<RootFileManager>
 {
@@ -16,7 +17,7 @@ class RootFileManager : public Tool::Registrar<RootFileManager>
     RootFileManager(std::string x) : m_x(x) {}
 
   public:
-    bool Initialise(std::string configfile, DataModel &data) override;
+    bool Initialise(std::string configfile, RainetteDataModel &data) override;
     bool Execute() override;
     bool Finalise() override;
 

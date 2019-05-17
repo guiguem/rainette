@@ -5,13 +5,16 @@
 #include <string>
 #include <vector>
 
-//#include "TTree.h"
+#include "TTree.h"
 
 #include "DataModel.h"
 #include "Store.h"
 #include "Logging.h"
 
 #include <zmq.hpp>
+
+#include "CardData.h"
+
 
 class RainetteDataModel : public DataModel{
 
@@ -21,8 +24,8 @@ class RainetteDataModel : public DataModel{
   RainetteDataModel();
   TTree* GetTTree(std::string name);
   void AddTTree(std::string name,TTree *tree);
-  void DeleteTTree(std::string name);
-  
+  void DeleteTTree(std::string name,TTree *tree);
+
   Store vars;
   Logging *Log;
   

@@ -1,6 +1,6 @@
 #include "RootFileManager.h"
 
-bool RootFileManager::Initialise(std::string configfile, DataModel &data)
+bool RootFileManager::Initialise(std::string configfile, RainetteDataModel &data)
 {
 
   if (configfile != "")
