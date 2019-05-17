@@ -27,7 +27,7 @@ COPY CosmicCrisp /tmp_source/CosmicCrisp
 # COPY scarab /tmp_source/scarab
 COPY ToolDAQFramework /tmp_source/ToolDAQFramework
 COPY UserTools /tmp_source/UserTools
-COPY UserDataModels /tmp_source/UserDataModels
+COPY RainetteDataModels /tmp_source/RainetteDataModels
 
 COPY CMakeLists.txt /tmp_source/CMakeLists.txt
 COPY .git /tmp_source/.git
