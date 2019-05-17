@@ -1,4 +1,4 @@
-# CMakeLists for MyDataModel
+# CMakeLists for RainetteDataModel
 # Author: M. Guigue
 # Date: Jan 15, 2019
 
