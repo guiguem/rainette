@@ -1,5 +1,5 @@
-#ifndef MYDATAMODEL_H
-#define MYDATAMODEL_H
+#ifndef RAINETTEDATAMODEL_H
+#define RAINETTEDATAMODEL_H
 
 #include <map>
 #include <string>
@@ -13,12 +13,12 @@
 
 #include <zmq.hpp>
 
-class MyDataModel : public DataModel{
+class RainetteDataModel : public DataModel{
 
 
  public:
   
-  MyDataModel();
+  RainetteDataModel();
   //TTree* GetTTree(std::string name);
   //void AddTTree(std::string name,TTree *tree);
   //void DeleteTTree(std::string name,TTree *tree);
