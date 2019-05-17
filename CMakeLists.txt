@@ -42,7 +42,7 @@ include_directories (BEFORE
     ${PROJECT_SOURCE_DIR}/Applications
 )
 
-# add_subdirectory (RainetteDataModel)
+# add_subdirectory (RainetteDataModels)
 add_subdirectory (UserTools/CosmicCrispConverter)
 add_subdirectory (UserTools/MyTool)
 add_subdirectory (UserTools/TextReader)
