@@ -7,8 +7,8 @@
 #include "Tool.h"
 
 #include "HodoscopeData.h"
-// #include "MyDataModel.h"
-class MyDataModel;
+// #include "RainetteDataModel.h"
+class RainetteDataModel;
 
 class CosmicCrispConverter : public Tool::Registrar<CosmicCrispConverter>
 {

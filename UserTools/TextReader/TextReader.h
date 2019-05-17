@@ -5,8 +5,8 @@
 #include <iostream>
 
 #include "Tool.h"
-// #include "MyDataModel.h"
-class MyDataModel;
+// #include "RainetteDataModel.h"
+class RainetteDataModel;
 
 class TextReader : public Tool::Registrar<TextReader>
 {
