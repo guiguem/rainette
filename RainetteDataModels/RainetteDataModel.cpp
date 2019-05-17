@@ -2,7 +2,7 @@
 
 RainetteDataModel::RainetteDataModel(){}
 
-/*
+
 TTree* RainetteDataModel::GetTTree(std::string name){
 
   return m_trees[name];
@@ -23,5 +23,4 @@ void RainetteDataModel::DeleteTTree(std::string name,TTree *tree){
 
 }
 
-*/
 

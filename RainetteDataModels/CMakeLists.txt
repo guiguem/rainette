@@ -4,6 +4,7 @@
 
 
 set( RAINETTEDM_DICT_HEADERFILES
+    CardData.h
     RainetteDataModel.h
 )
 

@@ -19,29 +19,21 @@ class RainetteDataModel : public DataModel{
  public:
   
   RainetteDataModel();
-  //TTree* GetTTree(std::string name);
-  //void AddTTree(std::string name,TTree *tree);
-  //void DeleteTTree(std::string name,TTree *tree);
-
+  TTree* GetTTree(std::string name);
+  void AddTTree(std::string name,TTree *tree);
+  void DeleteTTree(std::string name);
+  
   Store vars;
   Logging *Log;
-
+  
   zmq::context_t* context;
 
+  std::vector<CardData*> Cards; 
+  long eventnum;
 
-  //  bool (*Log)(std::string, int);
-
-  /*  
-  template<Type T>
-    struct Log {
-      typedef bool (*type)(T message,int verboselevel);
-    };
-  */
  private:
-
-
   
-  //std::map<std::string,TTree*> m_trees; 
+  std::map<std::string,TTree*> m_trees; 
   
   
   
