@@ -1,22 +1,22 @@
-# CMakeLists for MyDataModel
+# CMakeLists for RainetteDataModel
 # Author: M. Guigue
 # Date: Jan 15, 2019
 
 
-set( MYDM_DICT_HEADERFILES
-    MyDataModel.h
+set( RAINETTEDM_DICT_HEADERFILES
+    RainetteDataModel.h
 )
 
-set( MYDM_HEADERFILES
-    ${MYDM_DICT_HEADERFILES}
+set( RAINETTEDM_HEADERFILES
+    ${RAINETTEDM_DICT_HEADERFILES}
 )
 
-set( MYDM_SOURCEFILES
-    MyDataModel.cpp
+set( RAINETTEDM_SOURCEFILES
+    RainetteDataModel.cpp
 )
 
 
-set (MYDM_DEP_LIBRARIES
+set (RAINETTEDM_DEP_LIBRARIES
  Store_Rainette
  BaseDataModel_Rainette
 #  cppzmq
@@ -31,6 +31,6 @@ set (MYDM_DEP_LIBRARIES
 # ROOT_GENERATE_DICTIONARY(  CoreDict ${STORE_DICT_HEADERFILES} LINKDEF ${STORE_LINKDEF_HEADERFILE} )
 # pbuilder_install_files( ${LIB_INSTALL_DIR} ${STORE_DICT_PCMFILE} )
 
-pbuilder_library( MyDataModel MYDM_SOURCEFILES MYDM_DEP_LIBRARIES )
-pbuilder_install_headers( ${MYDM_HEADERFILES} )
+pbuilder_library( RainetteDataModel RAINETTEDM_SOURCEFILES RAINETTEDM_DEP_LIBRARIES )
+pbuilder_install_headers( ${RAINETTEDM_HEADERFILES} )
 
