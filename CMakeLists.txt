@@ -16,6 +16,7 @@ pbuilder_prepare_project()
 # Submodules
 #############
 
+set( ToolDAQ_BUILD_MAIN_EXE OFF )
 pbuilder_add_submodule( ToolDAQFramework ToolDAQFramework )
 set( CosmicCrisp_ENABLE_EXECUTABLES OFF )
 pbuilder_add_submodule( CosmicCrisp CosmicCrisp )

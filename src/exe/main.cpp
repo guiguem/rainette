@@ -1,5 +1,6 @@
 /* This is the Rainette main executable.
 It is suposed to over-seed the ToolDAQFramework one.
+NOTE: WE COULD ALSO USE THE FRAMEWORK ONE IN CMAKELISTS
 */
 
 #include <string>

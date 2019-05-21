@@ -14,6 +14,7 @@ set( lib_dependencies
     TestsTools
 )
 
+# we could also just point to the ToolDAQFramework one
 set( main_exe
     main
 )
