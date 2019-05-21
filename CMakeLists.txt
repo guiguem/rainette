@@ -37,6 +37,7 @@ set(CMAKE_CXX_STANDARD 14)
 # subdirectories
 include_directories (BEFORE
     # ${PROJECT_SOURCE_DIR}/UserTools/CosmicCrispConverter
+    ${PROJECT_SOURCE_DIR}/src/data
     ${PROJECT_SOURCE_DIR}/src/tools/Tests
     ${PROJECT_SOURCE_DIR}/src/tools/IO
     ${PROJECT_SOURCE_DIR}/src/exe
@@ -44,6 +45,7 @@ include_directories (BEFORE
 
 # add_subdirectory (RainetteDataModels)
 # add_subdirectory (UserTools/CosmicCrispConverter)
+add_subdirectory (src/data)
 add_subdirectory (src/tools/Tests)
 add_subdirectory (src/tools/IO)
 add_subdirectory (src/exe)

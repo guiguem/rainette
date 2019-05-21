@@ -28,11 +28,15 @@ bool TextWriter::Execute()
     std::string c;
     TestObject object;
 
+
     Log("test logger", 1, m_verbose);
     m_data->Stores["DataName"]->Get("a", a);
     m_data->Stores["DataName"]->Get("b", b);
     m_data->Stores["DataName"]->Get("testObj", object);
+    object.Print();
     Log("test 2", 1, m_verbose);
+    Log("a", 1, m_verbose);
+    Log(a, 1, m_verbose);
 
     m_file << "Writing value to a file: " << object.aValue << "\n";
 

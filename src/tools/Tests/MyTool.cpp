@@ -48,9 +48,17 @@ bool MyTool::Execute()
     testObj.aValue = 1.2;
     testObj.bValue = 2.3;
 
+    std::cout << testObj.Print() << std::endl;
+
     m_data->Stores["DataName"]->Set("a", a);
     m_data->Stores["DataName"]->Set("b", b);
     m_data->Stores["DataName"]->Set("testObj", testObj);
+
+    TestObject testObj2;
+
+    m_data->Stores["DataName"]->Set("testObj", testObj2);
+    std::cout << testObj2.Print() << std::endl;
+
 
     return true;
 }

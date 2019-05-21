@@ -5,6 +5,8 @@
 #include <iostream>
 
 #include "Tool.h"
+// #include "TestObject.h"
+#include "SerialisableObject.h"
 // #include "RainetteDataModel.h"
 class RainetteDataModel;
 
