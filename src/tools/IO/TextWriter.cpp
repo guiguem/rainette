@@ -26,15 +26,15 @@ bool TextWriter::Execute()
     int a;
     double b;
     std::string c;
-    Hit object;
+    TestObj object;
 
     Log("test logger", 1, m_verbose);
     m_data->Stores["DataName"]->Get("a", a);
     m_data->Stores["DataName"]->Get("b", b);
-    if (!m_data->Stores["DataName"]->Get("Hit", object)){
+    if (!m_data->Stores["DataName"]->Get("TestObj", object)){
         std::cout << "Failed wjsbdjskn" << std::endl;
     };
-    std::cout << "obj " << object.GetCharge() << std::endl; 
+    std::cout << "obj " << object.GetB() << std::endl; 
     Log("test 2", 1, m_verbose);
 
     m_file << "Writing value to a file: " << a << "\n";

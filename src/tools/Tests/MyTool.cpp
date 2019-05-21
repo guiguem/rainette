@@ -20,11 +20,11 @@ bool MyTool::Initialise(std::string configfile, DataModel &data)
     std::string configvalue = "important info";
     int a = 5;
     double b = 5.4;
-    Hit testobj;
+    TestObj testobj;
     m_data->CStore.Set("name", configvalue);
     m_data->CStore.Set("a", a);
     m_data->CStore.Set("b", b);
-    m_data->CStore.Set("Hit", testobj);
+    m_data->CStore.Set("TestObj", testobj);
 
     /////Set up a new store with multiple entries
     m_data->Stores["DataName"] = new BoostStore(false, 2);
@@ -34,7 +34,7 @@ bool MyTool::Initialise(std::string configfile, DataModel &data)
     m_data->Stores["DataName"]->Header->Set("name", headervalue);
     m_data->Stores["DataName"]->Header->Set("a", a);
     m_data->Stores["DataName"]->Header->Set("b", b);
-    m_data->Stores["DataName"]->Header->Set("Hit", testobj);
+    m_data->Stores["DataName"]->Header->Set("TestObj", testobj);
 
     return true;
 }
@@ -49,14 +49,14 @@ bool MyTool::Execute()
     double b = (rand() % 1000 + 1) / 10.0;
     std::string c = "stuff";
     std::cout << a << std::endl;
-    Hit testobj;
-    testobj.SetTime(1.3);
-    testobj.SetCharge(32.2);
+    TestObj testobj;
+    testobj.SetA(1.3);
+    testobj.SetB(32.2);
 
     m_data->Stores["DataName"]->Set("a", a);
     m_data->Stores["DataName"]->Set("b", b);
-    m_data->Stores["DataName"]->Set("Hit", testobj);
-m_data->Stores["DataName"]->Print();
+    m_data->Stores["DataName"]->Set("TestObj", testobj);
+    m_data->Stores["DataName"]->Print();
     // m_data->Stores["DataName"]->Save("mytest.txt");
 
     // double a2;
