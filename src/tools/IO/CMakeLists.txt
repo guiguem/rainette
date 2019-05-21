@@ -17,10 +17,9 @@ set( IOTools_SOURCEFILES
 
 
 set (IOTools_DEP_LIBRARIES
-    BaseDataModel_Rainette
-    Store_Rainette
-    cppzmq
-    # Data
+ BaseDataModel_Rainette
+ Store_Rainette
+ cppzmq
 )
 
 # set( STORE_LINKDEF_HEADERFILE LinkDef/ CoreLinkDef.h )

@@ -16,23 +16,25 @@ bool MyTool::Initialise(std::string configfile, DataModel &data)
     m_data = &data;
     m_variables.Get("verbose", m_verbose);
 
-    ////// Save some data to inter Tool/module persistant store (not mandatory)
+    ////// Save some data to inter Tool/module persistant store
     std::string configvalue = "important info";
     int a = 5;
     double b = 5.4;
-    TestObject testObj;
+    Hit testobj;
     m_data->CStore.Set("name", configvalue);
     m_data->CStore.Set("a", a);
     m_data->CStore.Set("b", b);
+    m_data->CStore.Set("Hit", testobj);
 
-    /////Set up a new store with multiple entries (mandatory)
+    /////Set up a new store with multiple entries
     m_data->Stores["DataName"] = new BoostStore(false, 2);
 
-    // set multi entry header info (not mandatory)
+    // set multi entry header info
     std::string headervalue = "info";
     m_data->Stores["DataName"]->Header->Set("name", headervalue);
     m_data->Stores["DataName"]->Header->Set("a", a);
-    m_data->Stores["DataName"]->Header->Set("testObj", testObj);
+    m_data->Stores["DataName"]->Header->Set("b", b);
+    m_data->Stores["DataName"]->Header->Set("Hit", testobj);
 
     return true;
 }
@@ -41,24 +43,25 @@ bool MyTool::Execute()
 {
 
     m_data->Log->Log("test 2", 2, m_verbose);
+
+    //// Generate random data
     int a = rand() % 10 + 1;
     double b = (rand() % 1000 + 1) / 10.0;
     std::string c = "stuff";
-    TestObject testObj;
-    testObj.aValue = 1.2;
-    testObj.bValue = 2.3;
-
-    std::cout << testObj.Print() << std::endl;
+    std::cout << a << std::endl;
+    Hit testobj;
+    testobj.SetTime(1.3);
+    testobj.SetCharge(32.2);
 
     m_data->Stores["DataName"]->Set("a", a);
     m_data->Stores["DataName"]->Set("b", b);
-    m_data->Stores["DataName"]->Set("testObj", testObj);
+    m_data->Stores["DataName"]->Set("Hit", testobj);
+m_data->Stores["DataName"]->Print();
+    // m_data->Stores["DataName"]->Save("mytest.txt");
 
-    TestObject testObj2;
-
-    m_data->Stores["DataName"]->Set("testObj", testObj2);
-    std::cout << testObj2.Print() << std::endl;
-
+    // double a2;
+    // m_data->Stores["DataName"]->Get("a2", a2);
+    // std::cout << a2 << std::endl;
 
     return true;
 }

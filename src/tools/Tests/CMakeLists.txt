@@ -22,7 +22,6 @@ set (TestsTools_DEP_LIBRARIES
  BaseDataModel_Rainette
  Store_Rainette
  cppzmq
-#  Data
 )
 
 # set( STORE_LINKDEF_HEADERFILE LinkDef/ CoreLinkDef.h )
