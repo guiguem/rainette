@@ -1,4 +1,4 @@
-#MyTool MyTool  ConfigFiles/MyTest/MyToolConfig
-DummyTool DummyTool ConfigFiles/MyTest/MyToolConfig
-#TextReader TextReader ConfigFiles/MyTest/TextReader
+MyTool MyTool  ConfigFiles/MyTest/MyToolConfig
+#DummyTool DummyTool ConfigFiles/MyTest/MyToolConfig
+TextWriter TextWriter ConfigFiles/MyTest/TextWriter
 Logger Logger ConfigFiles/MyTest/LoggerConfig

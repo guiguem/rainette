@@ -11,7 +11,7 @@ set( lib_dependencies
     Logger_Rainette
     DummyTool_Rainette
     MyTool
-    TextReader
+    TextWriter
 )
 
 set( main_exe

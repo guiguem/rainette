@@ -8,21 +8,22 @@
 // #include "RainetteDataModel.h"
 class RainetteDataModel;
 
-class TextReader : public Tool::Registrar<TextReader>
+class TextWriter : public Tool::Registrar<TextWriter>
 {
-  public:
-    TextReader(std::string x) : m_x(x) {}
+public:
+    TextWriter(std::string x) : m_x(x) {}
 
-  public:
+public:
     bool Initialise(std::string configfile, DataModel &data) override;
     bool Execute() override;
     bool Finalise() override;
 
-  private:
+private:
     int m_verbose;
     std::string m_x;
     std::string m_filename;
     std::ofstream m_file;
+
 };
 
 #endif

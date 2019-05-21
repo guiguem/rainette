@@ -3,20 +3,20 @@
 # Date: Jan 15, 2018
 
 
-set( TextReader_DICT_HEADERFILES
-    TextReader.h
+set( TextWriter_DICT_HEADERFILES
+    TextWriter.h
 )
 
-set( TextReader_HEADERFILES
-    ${TextReader_DICT_HEADERFILES}
+set( TextWriter_HEADERFILES
+    ${TextWriter_DICT_HEADERFILES}
 )
 
-set( TextReader_SOURCEFILES
-    TextReader.cpp
+set( TextWriter_SOURCEFILES
+    TextWriter.cpp
 )
 
 
-set (TextReader_DEP_LIBRARIES
+set (TextWriter_DEP_LIBRARIES
  BaseDataModel_Rainette
  Store_Rainette
  cppzmq
@@ -31,6 +31,6 @@ set (TextReader_DEP_LIBRARIES
 # ROOT_GENERATE_DICTIONARY(  CoreDict ${STORE_DICT_HEADERFILES} LINKDEF ${STORE_LINKDEF_HEADERFILE} )
 # pbuilder_install_files( ${LIB_INSTALL_DIR} ${STORE_DICT_PCMFILE} )
 
-pbuilder_library( TextReader TextReader_SOURCEFILES TextReader_DEP_LIBRARIES )
-pbuilder_install_headers( ${TextReader_HEADERFILES} )
+pbuilder_library( TextWriter TextWriter_SOURCEFILES TextWriter_DEP_LIBRARIES )
+pbuilder_install_headers( ${TextWriter_HEADERFILES} )
 
