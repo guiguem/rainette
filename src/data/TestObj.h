@@ -1,12 +1,7 @@
-#ifndef MYTOOL_H
-#define MYTOOL_H
+#ifndef TestObj_H_
+#define TestObj_H_
 
-#include <string>
-#include <iostream>
-
-#include "Tool.h"
-// #include "RainetteDataModel.h"
-class RainetteDataModel;
+#include "SerialisableObject.h"
 
 class TestObj : public SerialisableObject
 {
@@ -29,13 +24,7 @@ public:
         std::cout << "bValue : " << bValue << std::endl;
         return true;
     }
-
-    std::string Printer(){
-        std::stringstream printer;
-        printer << aValue << "\t" << bValue;
-        printer.str();
-    }
-	
+    friend std::ostream &operator<<(std::ostream &out, const TestObj &obj);
 
 protected:
     double aValue;
@@ -52,21 +41,10 @@ protected:
     }
 };
 
-class MyTool : public Tool::Registrar<MyTool>
+std::ostream &operator<<(std::ostream &out, const TestObj &obj)
 {
-public:
-    MyTool(std::string x) : m_x(x) {}
-
-    void makeNoise(); // { std::cerr << "Cat: " << m_x << "\n"; }
-
-public:
-    bool Initialise(std::string configfile, DataModel &data) override;
-    bool Execute() override;
-    bool Finalise() override;
-
-private:
-    int m_verbose;
-    std::string m_x;
-};
+    out << obj.aValue << "\t" << obj.bValue << std::endl;
+    return out;
+}
 
 #endif

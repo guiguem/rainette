@@ -5,6 +5,7 @@
 
 set( Data_DICT_HEADERFILES
     EventTest.h
+    TestObj.h
 )
 
 set( Data_HEADERFILES

@@ -37,7 +37,7 @@ bool TextWriter::Execute()
     std::cout << "obj " << object.GetB() << std::endl; 
     Log("test 2", 1, m_verbose);
 
-    m_file << "Writing value to a file: " << a << "\n";
+    m_file << "Writing value to a file:" << object<< "\n";
 
     return true;
 }
