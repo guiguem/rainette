@@ -36,17 +36,15 @@ set(CMAKE_CXX_STANDARD 14)
 # subdirectories
 include_directories (BEFORE
     # ${PROJECT_SOURCE_DIR}/UserTools/CosmicCrispConverter
-    ${PROJECT_SOURCE_DIR}/UserTools/MyTool
-    ${PROJECT_SOURCE_DIR}/UserTools/TextWriter
-    ${PROJECT_SOURCE_DIR}/UserTools/Wrench
-    ${PROJECT_SOURCE_DIR}/Applications
+    ${PROJECT_SOURCE_DIR}/src/tools/Tests
+    ${PROJECT_SOURCE_DIR}/src/tools/IO
+    ${PROJECT_SOURCE_DIR}/src/exe
 )
 
 # add_subdirectory (RainetteDataModels)
 # add_subdirectory (UserTools/CosmicCrispConverter)
-add_subdirectory (UserTools/MyTool)
-add_subdirectory (UserTools/TextWriter)
-add_subdirectory (UserTools/Wrench)
-add_subdirectory (Applications)
+add_subdirectory (src/tools/Tests)
+add_subdirectory (src/tools/IO)
+add_subdirectory (src/exe)
 
 pbuilder_variables_for_parent()

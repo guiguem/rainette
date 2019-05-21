@@ -26,14 +26,15 @@ bool TextWriter::Execute()
     int a;
     double b;
     std::string c;
+    TestObject object;
 
     Log("test logger", 1, m_verbose);
     m_data->Stores["DataName"]->Get("a", a);
     m_data->Stores["DataName"]->Get("b", b);
-    m_data->Stores["DataName"]->Get("c", c);
+    m_data->Stores["DataName"]->Get("testObj", object);
     Log("test 2", 1, m_verbose);
 
-    m_file << "Writing value to a file: " << a << "\n";
+    m_file << "Writing value to a file: " << object.aValue << "\n";
 
     return true;
 }

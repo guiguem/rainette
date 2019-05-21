@@ -10,8 +10,8 @@ set( lib_dependencies
     ToolChain_Rainette
     Logger_Rainette
     DummyTool_Rainette
-    MyTool
-    TextWriter
+    IOTools
+    TestsTools
 )
 
 set( main_exe
