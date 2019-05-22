@@ -1,16 +1,18 @@
 #ifndef TestObj_H_
 #define TestObj_H_
 
+#include <iostream>
+
 #include "SerialisableObject.h"
 
-class TestObj : public SerialisableObject
+class TestObj : public SerialisableObject::Registrar<TestObj>
 {
 
     friend class boost::serialization::access;
 
 public:
-    TestObj() : aValue(0), bValue(0) { serialise = true; }
-    TestObj(double theaValue, double thebValue) : aValue(theaValue), bValue(thebValue) { serialise = true; }
+    TestObj(std::string name) : aValue(0), bValue(0) { serialise = true; }
+    TestObj(std::string name, double theaValue, double thebValue) : aValue(theaValue), bValue(thebValue) { serialise = true; }
 
     inline double GetA() const { return aValue; }
     inline double GetB() const { return bValue; }
