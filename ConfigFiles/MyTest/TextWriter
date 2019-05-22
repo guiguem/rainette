@@ -4,4 +4,4 @@ verbose 1
 filename afile.txt
 storename DataName
 objectname TestObj
-objecttype TestObj
+objecttype vector<TestObj>

@@ -34,7 +34,7 @@ private:
 template <typename T>
 bool TextWriter::SaveToFile()
 {
-    T object(m_objectname);
+    T object;
     if (!m_data->Stores[m_storename.c_str()]->Get(m_objectname, object))
     {
         std::cout << "Failed " << m_objectname << std::endl;
@@ -42,6 +42,4 @@ bool TextWriter::SaveToFile()
     m_file <<  object;
     return true;
 }
-// Log(object->PrintAsString(), 1, m_verbose);
-
 #endif

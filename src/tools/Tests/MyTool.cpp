@@ -50,10 +50,17 @@ bool MyTool::Execute()
     
     // SerialisableObject::Registrar<TestObj>* testobj = new TestObj(std::string("DataName"), 1.2, 34.5);
     TestObj* testobj = new TestObj(std::string("DataName"), 1.2, 34.5);
+    std::vector<TestObj> vectorobj;
+    testobj->SetA(1.0);
+    testobj->SetB(32.0);
+    vectorobj.push_back(*testobj);
+    testobj->SetA(10.0);
+    testobj->SetB(320.0);
+    vectorobj.push_back(*testobj);
 
     m_data->Stores["DataName"]->Set("a", a);
     m_data->Stores["DataName"]->Set("b", b);
-    m_data->Stores["DataName"]->Set("TestObj", testobj);
+    m_data->Stores["DataName"]->Set("TestObj", vectorobj);
     m_data->Stores["DataName"]->Print();
     // m_data->Stores["DataName"]->Save("mytest.txt");
 

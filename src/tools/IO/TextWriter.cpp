@@ -1,4 +1,6 @@
 #include "TextWriter.h"
+
+// Add the header to your object below
 #include "TestObj.h"
 
 /** @brief Method that transforms a const char into int (useful for switch logic) */
@@ -7,7 +9,7 @@ constexpr unsigned int str2int(const char *str, int h = 0)
     return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
 }
 
-template <typename T> using VECTOR = std::vector<T>;
+// template <typename T> using VECTOR = std::vector<T>;
 
 bool TextWriter::Initialise(std::string configfile, DataModel &data)
 {
@@ -57,9 +59,15 @@ bool TextWriter::Execute()
 {
     switch (str2int(m_objecttype.c_str()))
     {
+        // Add your object below
     case (str2int("TestObj")):
     {
         return SaveToFile<TestObj>();
+        break;
+    }
+    case (str2int("vector<TestObj>")):
+    {
+        return SaveToFile<std::vector<TestObj>>();
         break;
     }
 

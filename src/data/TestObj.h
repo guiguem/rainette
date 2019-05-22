@@ -1,9 +1,16 @@
 #ifndef TestObj_H_
 #define TestObj_H_
 
-#include <iostream>      // for ostream, string, ostringstream
-#include "BoostStore.h"  // for BoostStore
-namespace boost { namespace serialization { class access; } }
+#include <iostream>     // for ostream, string, ostringstream
+#include <vector>       // for ostream, string, ostringstream
+#include "BoostStore.h" // for BoostStore
+namespace boost
+{
+namespace serialization
+{
+class access;
+}
+} // namespace boost
 
 class TestObj : public SerialisableObject::Registrar<TestObj>
 {
@@ -11,6 +18,7 @@ class TestObj : public SerialisableObject::Registrar<TestObj>
     friend class boost::serialization::access;
 
 public:
+    TestObj() : aValue(0), bValue(0) { serialise = true; }
     TestObj(std::string name) : aValue(0), bValue(0) { serialise = true; }
     TestObj(std::string name, double theaValue, double thebValue) : aValue(theaValue), bValue(thebValue) { serialise = true; }
 
@@ -26,9 +34,11 @@ public:
         std::cout << "bValue : " << bValue << std::endl;
         return true;
     }
-    // Needed so we can write it into a text file (via TextWriterTool)
+    // Needed so we can write it into a text file (via TextWriter)
     friend std::ostream &operator<<(std::ostream &out, const TestObj &obj);
-    friend void &operator>>(std::ostream &out, TestObj obj);
+    friend std::ostream &operator<<(std::ostream &out, std::vector<TestObj> &vector);
+
+    // friend void &operator>>(std::ostream &out, TestObj obj);
 
 protected:
     double aValue;
@@ -51,5 +61,13 @@ std::ostream &operator<<(std::ostream &out, const TestObj &obj)
     return out;
 }
 
+std::ostream &operator<<(std::ostream &out, std::vector<TestObj> &avector)
+{
+    for (std::vector<TestObj>::iterator iter = avector.begin(); iter != avector.end(); ++iter)
+    {
+        out << (*iter).aValue << "\t" << (*iter).bValue << std::endl;
+    }
+    return out;
+}
 
 #endif
