@@ -20,6 +20,7 @@ set( TestsTools_SOURCEFILES
 
 set (TestsTools_DEP_LIBRARIES
  BaseDataModel_Rainette
+ Data
  Store_Rainette
  cppzmq
 )

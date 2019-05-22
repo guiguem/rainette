@@ -18,6 +18,7 @@ set( IOTools_SOURCEFILES
 
 set (IOTools_DEP_LIBRARIES
  BaseDataModel_Rainette
+ Data
  Store_Rainette
  cppzmq
 )

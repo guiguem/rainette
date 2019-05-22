@@ -1,7 +1,5 @@
 #include "MyTool.h"
 
-void MyTool::makeNoise() { std::cerr << "MyTool: " << m_x << "\n"; }
-
 bool MyTool::Initialise(std::string configfile, DataModel &data)
 {
 
@@ -20,21 +18,21 @@ bool MyTool::Initialise(std::string configfile, DataModel &data)
     std::string configvalue = "important info";
     int a = 5;
     double b = 5.4;
-    TestObj testobj;
-    m_data->CStore.Set("name", configvalue);
-    m_data->CStore.Set("a", a);
-    m_data->CStore.Set("b", b);
-    m_data->CStore.Set("TestObj", testobj);
+    // TestObj testobj;
+    // m_data->CStore.Set("name", configvalue);
+    // m_data->CStore.Set("a", a);
+    // m_data->CStore.Set("b", b);
+    // m_data->CStore.Set("TestObj", testobj);
 
     /////Set up a new store with multiple entries
     m_data->Stores["DataName"] = new BoostStore(false, 2);
 
     // set multi entry header info
-    std::string headervalue = "info";
-    m_data->Stores["DataName"]->Header->Set("name", headervalue);
-    m_data->Stores["DataName"]->Header->Set("a", a);
-    m_data->Stores["DataName"]->Header->Set("b", b);
-    m_data->Stores["DataName"]->Header->Set("TestObj", testobj);
+    // std::string headervalue = "info";
+    // m_data->Stores["DataName"]->Header->Set("name", headervalue);
+    // m_data->Stores["DataName"]->Header->Set("a", a);
+    // m_data->Stores["DataName"]->Header->Set("b", b);
+    // m_data->Stores["DataName"]->Header->Set("TestObj", testobj);
 
     return true;
 }
@@ -49,7 +47,8 @@ bool MyTool::Execute()
     double b = (rand() % 1000 + 1) / 10.0;
     std::string c = "stuff";
     std::cout << a << std::endl;
-    TestObj testobj;
+    
+    TestObj testobj(std::string("DataName"));
     testobj.SetA(1.3);
     testobj.SetB(32.2);
 

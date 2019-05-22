@@ -26,7 +26,7 @@ bool TextWriter::Execute()
     int a;
     double b;
     std::string c;
-    TestObj object;
+    TestObj object(std::string("DataName"));
 
     Log("test logger", 1, m_verbose);
     m_data->Stores["DataName"]->Get("a", a);
