@@ -1,25 +1,26 @@
-# CMakeLists for RainetteDataModel
-# Author: M. Guigue
-# Date: Jan 15, 2019
+# CMakeLists for  Core
+# Author: N. Oblath
+# Date: Jan 15, 2018
 
 
-set( RAINETTEDM_DICT_HEADERFILES
-    RainetteDataModel.h
+set( IOTools_DICT_HEADERFILES
+    TextWriter.h
 )
 
-set( RAINETTEDM_HEADERFILES
-    ${RAINETTEDM_DICT_HEADERFILES}
+set( IOTools_HEADERFILES
+    ${IOTools_DICT_HEADERFILES}
 )
 
-set( RAINETTEDM_SOURCEFILES
-    RainetteDataModel.cpp
+set( IOTools_SOURCEFILES
+    TextWriter.cpp
 )
 
 
-set (RAINETTEDM_DEP_LIBRARIES
- Store_Rainette
+set (IOTools_DEP_LIBRARIES
  BaseDataModel_Rainette
-#  cppzmq
+ Data
+ Store_Rainette
+ cppzmq
 )
 
 # set( STORE_LINKDEF_HEADERFILE LinkDef/ CoreLinkDef.h )
@@ -31,6 +32,6 @@ set (RAINETTEDM_DEP_LIBRARIES
 # ROOT_GENERATE_DICTIONARY(  CoreDict ${STORE_DICT_HEADERFILES} LINKDEF ${STORE_LINKDEF_HEADERFILE} )
 # pbuilder_install_files( ${LIB_INSTALL_DIR} ${STORE_DICT_PCMFILE} )
 
-pbuilder_library( RainetteDataModel RAINETTEDM_SOURCEFILES RAINETTEDM_DEP_LIBRARIES )
-pbuilder_install_headers( ${RAINETTEDM_HEADERFILES} )
+pbuilder_library( IOTools IOTools_SOURCEFILES IOTools_DEP_LIBRARIES )
+pbuilder_install_headers( ${IOTools_HEADERFILES} )
 
