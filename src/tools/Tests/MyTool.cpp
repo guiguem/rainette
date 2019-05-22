@@ -48,9 +48,8 @@ bool MyTool::Execute()
     std::string c = "stuff";
     std::cout << a << std::endl;
     
-    TestObj testobj(std::string("DataName"));
-    testobj.SetA(1.3);
-    testobj.SetB(32.2);
+    // SerialisableObject::Registrar<TestObj>* testobj = new TestObj(std::string("DataName"), 1.2, 34.5);
+    TestObj* testobj = new TestObj(std::string("DataName"), 1.2, 34.5);
 
     m_data->Stores["DataName"]->Set("a", a);
     m_data->Stores["DataName"]->Set("b", b);

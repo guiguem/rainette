@@ -17,13 +17,17 @@ public:
 
 public:
     bool Initialise(std::string configfile, DataModel &data) override;
-    bool Execute() override;
+    bool Execute();// = 0;
     bool Finalise() override;
+
+    // virtual bool ExtractSaveObjects();
 
 private:
     int m_verbose;
     std::string m_x;
     std::string m_filename;
+    std::string m_objectname;
+    std::string m_storename;
     std::ofstream m_file;
 };
 

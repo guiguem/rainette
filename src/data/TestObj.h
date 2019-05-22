@@ -2,8 +2,10 @@
 #define TestObj_H_
 
 #include <iostream>
+#include <sstream>      // std::ostringstream
 
 #include "SerialisableObject.h"
+#include "BoostStore.h"
 
 class TestObj : public SerialisableObject::Registrar<TestObj>
 {
@@ -13,6 +15,7 @@ class TestObj : public SerialisableObject::Registrar<TestObj>
 public:
     TestObj(std::string name) : aValue(0), bValue(0) { serialise = true; }
     TestObj(std::string name, double theaValue, double thebValue) : aValue(theaValue), bValue(thebValue) { serialise = true; }
+    TestObj(const BoostStore& store);
 
     inline double GetA() const { return aValue; }
     inline double GetB() const { return bValue; }
@@ -26,6 +29,16 @@ public:
         std::cout << "bValue : " << bValue << std::endl;
         return true;
     }
+    std::string PrintAsString()
+    {
+        std::ostringstream strs;
+        strs << aValue;
+        strs << "\t";
+        strs << bValue;
+        std::string str = strs.str();
+        return str;
+    }
+    // Needed so we can write it into a text file (via TextWriterTool)
     friend std::ostream &operator<<(std::ostream &out, const TestObj &obj);
 
 protected:
@@ -48,5 +61,6 @@ std::ostream &operator<<(std::ostream &out, const TestObj &obj)
     out << obj.aValue << "\t" << obj.bValue << std::endl;
     return out;
 }
+
 
 #endif
