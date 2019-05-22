@@ -1,25 +1,24 @@
 # CMakeLists for  Core
-# Author: C. Riccio
-# Date: May 2, 2019
+# Author: N. Oblath
+# Date: Jan 15, 2018
 
 
-set( RootFileManager_DICT_HEADERFILES
-    RootFileManager.h
+set( Data_DICT_HEADERFILES
+    CardData.h
+    TestObj.h
 )
 
-set( RootFileManager_HEADERFILES
-    ${RootFileManager_DICT_HEADERFILES}
+set( Data_HEADERFILES
+    ${Data_DICT_HEADERFILES}
 )
 
-set( RootFileManager_SOURCEFILES
-    RootFileManager.cpp
+set( Data_SOURCEFILES
+    TestObj.cpp
 )
 
 
-set (RootFileManager_DEP_LIBRARIES
- BaseDataModel_Rainette
- Store_Rainette
- cppzmq
+set (Data_DEP_LIBRARIES
+    Factory_Rainette
 )
 
 # set( STORE_LINKDEF_HEADERFILE LinkDef/ CoreLinkDef.h )
@@ -31,7 +30,6 @@ set (RootFileManager_DEP_LIBRARIES
 # ROOT_GENERATE_DICTIONARY(  CoreDict ${STORE_DICT_HEADERFILES} LINKDEF ${STORE_LINKDEF_HEADERFILE} )
 # pbuilder_install_files( ${LIB_INSTALL_DIR} ${STORE_DICT_PCMFILE} )
 
-pbuilder_library( RootFileManager RootFileManager_SOURCEFILES RootFileManager_DEP_LIBRARIES )
-pbuilder_install_headers( ${RootFileManager_HEADERFILES} )
-
+pbuilder_library( Data Data_SOURCEFILES Data_DEP_LIBRARIES )
+pbuilder_install_headers( ${Data_HEADERFILES} )
 

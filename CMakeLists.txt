@@ -3,7 +3,8 @@ cmake_minimum_required(VERSION 3.1)
 cmake_policy( SET CMP0048 NEW ) # version in project()
 project( Rainette VERSION 1.1.6 )
 
-list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/ToolDAQFramework/src/vendor/scarab/cmake )
+list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/ToolDAQFramework/cmake )
+MESSAGE(STATUS ${PROJECT_SOURCE_DIR}/ToolDAQFramework/cmake)
 list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/ToolDAQFramework/src/vendor/cppzmq/cmake )
 list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake )
 
@@ -15,6 +16,7 @@ pbuilder_prepare_project()
 # Submodules
 #############
 
+set( ToolDAQ_BUILD_MAIN_EXE OFF )
 pbuilder_add_submodule( ToolDAQFramework ToolDAQFramework )
 set( CosmicCrisp_ENABLE_EXECUTABLES OFF )
 pbuilder_add_submodule( CosmicCrisp CosmicCrisp )
@@ -49,21 +51,18 @@ include_directories (${ROOT_INCLUDE_DIR})
 
 # subdirectories
 include_directories (BEFORE
-    ${PROJECT_SOURCE_DIR}/RainetteDataModels
-    ${PROJECT_SOURCE_DIR}/UserTools/CosmicCrispConverter
-    ${PROJECT_SOURCE_DIR}/UserTools/MyTool
-    ${PROJECT_SOURCE_DIR}/UserTools/TextReader
-    ${PROJECT_SOURCE_DIR}/UserTools/Wrench
-    ${PROJECT_SOURCE_DIR}/UserTools/RootFileManager
-    ${PROJECT_SOURCE_DIR}/Applications
+    ${PROJECT_SOURCE_DIR}/src/data
+    ${PROJECT_SOURCE_DIR}/src/converters
+    ${PROJECT_SOURCE_DIR}/src/tools/IO
+    ${PROJECT_SOURCE_DIR}/src/tools/tests
+    ${PROJECT_SOURCE_DIR}/src/exe
 )
 
-add_subdirectory (RainetteDataModels)
-add_subdirectory (UserTools/CosmicCrispConverter)
-add_subdirectory (UserTools/MyTool)
-add_subdirectory (UserTools/TextReader)
-add_subdirectory (UserTools/Wrench)
-add_subdirectory (UserTools/RootFileManager)
-add_subdirectory (Applications)
+# add_subdirectory (RainetteDataModels)
+add_subdirectory (src/data)
+add_subdirectory (src/tools/converters)
+add_subdirectory (src/tools/tests)
+add_subdirectory (src/tools/IO)
+add_subdirectory (src/exe)
 
 pbuilder_variables_for_parent()

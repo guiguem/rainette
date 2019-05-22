@@ -1,7 +1,5 @@
 #include "CosmicCrispConverter.h"
 
-void CosmicCrispConverter::makeNoise() { std::cerr << "CosmicCrispConverter: " << m_x << "\n"; }
-
 bool CosmicCrispConverter::Initialise(std::string configfile, DataModel &data)
 {
 

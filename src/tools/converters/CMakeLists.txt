@@ -3,23 +3,23 @@
 # Date: Jan 15, 2018
 
 
-set( TextReader_DICT_HEADERFILES
-    TextReader.h
+set( Converters_DICT_HEADERFILES
+    CosmicCrispConverter.h
 )
 
-set( TextReader_HEADERFILES
-    ${TextReader_DICT_HEADERFILES}
+set( Converters_HEADERFILES
+    ${Converters_DICT_HEADERFILES}
 )
 
-set( TextReader_SOURCEFILES
-    TextReader.cpp
+set( Converters_SOURCEFILES
+    CosmicCrispConverter.cpp
 )
 
-
-set (TextReader_DEP_LIBRARIES
+set (Converters_DEP_LIBRARIES
  BaseDataModel_Rainette
  Store_Rainette
  cppzmq
+ Data_Rainette
 )
 
 # set( STORE_LINKDEF_HEADERFILE LinkDef/ CoreLinkDef.h )
@@ -31,6 +31,6 @@ set (TextReader_DEP_LIBRARIES
 # ROOT_GENERATE_DICTIONARY(  CoreDict ${STORE_DICT_HEADERFILES} LINKDEF ${STORE_LINKDEF_HEADERFILE} )
 # pbuilder_install_files( ${LIB_INSTALL_DIR} ${STORE_DICT_PCMFILE} )
 
-pbuilder_library( TextReader TextReader_SOURCEFILES TextReader_DEP_LIBRARIES )
-pbuilder_install_headers( ${TextReader_HEADERFILES} )
+pbuilder_library( Converters Converters_SOURCEFILES Converters_DEP_LIBRARIES )
+pbuilder_install_headers( ${Converters_HEADERFILES} )
 

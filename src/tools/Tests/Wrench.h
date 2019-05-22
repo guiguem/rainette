@@ -13,4 +13,5 @@ class Wrench : public Tool::Registrar<Wrench>
 
   private:
     std::string m_x;
+    int m_verbose;
 };

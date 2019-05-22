@@ -1,15 +1,28 @@
-# CMakeLists for  ToolChain
-# Author: M. Guigue
-# Date: Jan 15, 2019
+# CMakeLists for  Core
+# Author: N. Oblath
+# Date: Jan 15, 2018
 
-set (WRENCHES_HEADERS
+
+set( TestsTools_DICT_HEADERFILES
+    MyTool.h
     Wrench.h
 )
-set (WRENCHES_SOURCES
+
+set( TestsTools_HEADERFILES
+    ${TestsTools_DICT_HEADERFILES}
+)
+
+set( TestsTools_SOURCEFILES
+    MyTool.cpp
     Wrench.cpp
 )
-set (WRENCHES_DEP_LIBRARIES
-    Store_Rainette
+
+
+set (TestsTools_DEP_LIBRARIES
+ BaseDataModel_Rainette
+ Data
+ Store_Rainette
+ cppzmq
 )
 
 # set( STORE_LINKDEF_HEADERFILE LinkDef/ CoreLinkDef.h )
@@ -21,7 +34,6 @@ set (WRENCHES_DEP_LIBRARIES
 # ROOT_GENERATE_DICTIONARY(  CoreDict ${STORE_DICT_HEADERFILES} LINKDEF ${STORE_LINKDEF_HEADERFILE} )
 # pbuilder_install_files( ${LIB_INSTALL_DIR} ${STORE_DICT_PCMFILE} )
 
-# pbuilder_library( ToolChain TOOLCHAIN_SOURCEFILES TOOLCHAIN_DEP_LIBRARIES )
-# pbuilder_install_headers( ${TOOLCHAIN_HEADERFILES} )
-pbuilder_library( Wrenches WRENCHES_SOURCES WRENCHES_DEP_LIBRARIES )
-pbuilder_install_headers( ${WRENCHES_HEADERS} )
+pbuilder_library( TestsTools TestsTools_SOURCEFILES TestsTools_DEP_LIBRARIES )
+pbuilder_install_headers( ${TestsTools_HEADERFILES} )
+

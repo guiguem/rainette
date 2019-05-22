@@ -1,19 +1,18 @@
-#ifndef MYTOOL_H
-#define MYTOOL_H
+#ifndef ROOTFILEMANAGER_H
+#define ROOTFILEMANAGER_H
 
 #include <string>
 #include <iostream>
+#include <TFile.h>
+#include "TTree.h"
 
+#include "CardData.h"
 #include "Tool.h"
-// #include "RainetteDataModel.h"
-class RainetteDataModel;
 
-class MyTool : public Tool::Registrar<MyTool>
+class RootFileManager : public Tool::Registrar<RootFileManager>
 {
   public:
-    MyTool(std::string x) : m_x(x) {}
-
-    void makeNoise(); // { std::cerr << "Cat: " << m_x << "\n"; }
+    RootFileManager(std::string x) : m_x(x) {}
 
   public:
     bool Initialise(std::string configfile, DataModel &data) override;
@@ -23,6 +22,8 @@ class MyTool : public Tool::Registrar<MyTool>
   private:
     int m_verbose;
     std::string m_x;
+    TFile* foutput;
+    CardData localcard;
 
 };
 

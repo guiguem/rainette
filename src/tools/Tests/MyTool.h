@@ -5,24 +5,24 @@
 #include <iostream>
 
 #include "Tool.h"
-// #include "RainetteDataModel.h"
+#include "TestObj.h"
+
 class RainetteDataModel;
 
-class TextReader : public Tool::Registrar<TextReader>
-{
-  public:
-    TextReader(std::string x) : m_x(x) {}
 
-  public:
+class MyTool : public Tool::Registrar<MyTool>
+{
+public:
+    MyTool(std::string x) : m_x(x) {}
+
+public:
     bool Initialise(std::string configfile, DataModel &data) override;
     bool Execute() override;
     bool Finalise() override;
 
-  private:
+private:
     int m_verbose;
     std::string m_x;
-    std::string m_filename;
-    std::ofstream m_file;
 };
 
 #endif

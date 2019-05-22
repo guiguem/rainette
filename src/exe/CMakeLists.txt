@@ -5,12 +5,11 @@
 set( lib_dependencies 
     ToolChain_Rainette
     DummyTool_Rainette
-    Logger_Rainette
-    MyTool
-    TextReader
-    RootFileManager
+    IOTools
+    TestsTools
 )
 
+# we could also just point to the ToolDAQFramework one
 set( main_exe
     main
 )
