@@ -1,14 +1,9 @@
 #ifndef MYTOOL_H
 #define MYTOOL_H
 
-#include <string>
-#include <iostream>
-
-#include "Tool.h"
-#include "TestObj.h"
-// #include "RainetteDataModel.h"
-class RainetteDataModel;
-
+#include <iostream> // for string, ofstream
+#include "Tool.h"   // for Tool
+class DataModel;
 
 class TextWriter : public Tool::Registrar<TextWriter>
 {
@@ -17,8 +12,12 @@ public:
 
 public:
     bool Initialise(std::string configfile, DataModel &data) override;
-    bool Execute();// = 0;
+    bool Execute() override; // = 0;
     bool Finalise() override;
+
+private:
+    template <typename T>
+    bool SaveToFile();
 
     // virtual bool ExtractSaveObjects();
 
@@ -27,8 +26,22 @@ private:
     std::string m_x;
     std::string m_filename;
     std::string m_objectname;
+    std::string m_objecttype;
     std::string m_storename;
     std::ofstream m_file;
 };
+
+template <typename T>
+bool TextWriter::SaveToFile()
+{
+    T object(m_objectname);
+    if (!m_data->Stores[m_storename.c_str()]->Get(m_objectname, object))
+    {
+        std::cout << "Failed " << m_objectname << std::endl;
+    };
+    m_file <<  object;
+    return true;
+}
+// Log(object->PrintAsString(), 1, m_verbose);
 
 #endif

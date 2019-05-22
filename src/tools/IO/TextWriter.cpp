@@ -1,5 +1,13 @@
 #include "TextWriter.h"
-#include "ToolBox.h"
+#include "TestObj.h"
+
+/** @brief Method that transforms a const char into int (useful for switch logic) */
+constexpr unsigned int str2int(const char *str, int h = 0)
+{
+    return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
+}
+
+template <typename T> using VECTOR = std::vector<T>;
 
 bool TextWriter::Initialise(std::string configfile, DataModel &data)
 {
@@ -17,7 +25,7 @@ bool TextWriter::Initialise(std::string configfile, DataModel &data)
     m_variables.Get("filename", m_filename);
     m_variables.Get("storename", m_storename);
     m_variables.Get("objectname", m_objectname);
-    // m_variables.Get("objecttype", m_objecttype);
+    m_variables.Get("objecttype", m_objecttype);
 
     if (m_filename == "")
     {
@@ -34,6 +42,11 @@ bool TextWriter::Initialise(std::string configfile, DataModel &data)
         std::cout << "Error: No object type given for TextWriter" << std::endl;
         return false;
     }
+    if (m_objecttype == "")
+    {
+        std::cout << "Error: No object type given for TextWriter" << std::endl;
+        return false;
+    }
 
     m_file.open(m_filename.c_str());
 
@@ -42,25 +55,19 @@ bool TextWriter::Initialise(std::string configfile, DataModel &data)
 
 bool TextWriter::Execute()
 {
-
-    int a;
-    double b;
-    std::string c;
-    TestObj object2(m_objectname);
-    // auto object = m_objectbox.CreateSerialObject(m_objecttype, "mybject");
-
-    // Log("test logger", 1, m_verbose);
-    // m_data->Stores["DataName"]->Get("a", a);
-    // m_data->Stores["DataName"]->Get("b", b);
-    if (!m_data->Stores[m_storename.c_str()]->Get(m_objectname, object2))
+    switch (str2int(m_objecttype.c_str()))
     {
-            std::cout << "Failed " << m_objectname << std::endl;
-    };
-    // Log(object->PrintAsString(), 1, m_verbose);
+    case (str2int("TestObj")):
+    {
+        return SaveToFile<TestObj>();
+        break;
+    }
 
-    m_file <<  object2 << "\n";
+    default:
+        break;
+    }
 
-    return true;
+    return false;
 }
 
 bool TextWriter::Finalise()
