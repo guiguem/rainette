@@ -37,6 +37,9 @@ public:
     // Needed so we can write it into a text file (via TextWriter)
     friend std::ostream &operator<<(std::ostream &out, const TestObj &obj);
     friend std::ostream &operator<<(std::ostream &out, std::vector<TestObj> &vector);
+    // Needed so we can read it from a text file (via TextWriter)
+    friend std::istream &operator>>(std::istream &in, TestObj &obj);
+    // friend std::istream &operator>>(std::istream &out, std::vector<TestObj> &vector);
 
     // friend void &operator>>(std::ostream &out, TestObj obj);
 
@@ -54,6 +57,12 @@ protected:
         }
     }
 };
+
+std::istream &operator>>(std::istream &in, TestObj &obj)
+{
+    in >> obj.aValue >> obj.bValue;
+    return in;
+}
 
 std::ostream &operator<<(std::ostream &out, const TestObj &obj)
 {

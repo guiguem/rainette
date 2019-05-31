@@ -4,7 +4,7 @@
 
 
 set( IOTools_DICT_HEADERFILES
-    TextWriter.h
+    TextIO.h
 )
 
 set( IOTools_HEADERFILES
@@ -12,7 +12,7 @@ set( IOTools_HEADERFILES
 )
 
 set( IOTools_SOURCEFILES
-    TextWriter.cpp
+    TextIO.cpp
 )
 
 

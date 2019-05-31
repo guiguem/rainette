@@ -1,4 +1,4 @@
 MyTool MyTool  ConfigFiles/MyTest/MyToolConfig
 #DummyTool DummyTool ConfigFiles/MyTest/MyToolConfig
-TextWriter TextWriter ConfigFiles/MyTest/TextWriter
+TextIO TextIO ConfigFiles/MyTest/TextWriter
 Logger Logger ConfigFiles/MyTest/LoggerConfig
