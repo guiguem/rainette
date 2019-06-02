@@ -1,5 +1,5 @@
-#ifndef MYTOOL_H
-#define MYTOOL_H
+#ifndef TextIO_H
+#define TextIO_H
 
 #include <iostream> // for string, ofstream
 #include "Tool.h"   // for Tool
@@ -26,6 +26,9 @@ private:
     bool Write();
     template <typename T>
     bool ReadFromFile();
+    // bool ReadStringFromFile(); ///< A special function because reading std::string from a file is weird...
+    bool ReadBinaryFromFile(); ///< A special function because reading binary data from a file is weird...
+    bool SaveStringIntoFile(); ///< A special function because writing std::string from a file is weird...
     template <typename T>
     bool SaveToFile();
 
@@ -49,8 +52,12 @@ bool TextIO::SaveToFile()
     T object;
     if (!m_data->Stores[m_storename.c_str()]->Get(m_objectname, object))
     {
-        std::cout << "Failed writing" << m_objectname << std::endl;
+        std::cout << "Failed find" << m_objectname << std::endl;
+        return false;
     };
+    // Remove object
+    T object_empty;
+    m_data->Stores[m_storename.c_str()]->Set(m_objectname, object_empty);
     m_outfile << object;
     return true;
 }
@@ -62,9 +69,8 @@ bool TextIO::ReadFromFile()
     m_infile >> object;
     std::cout << object << std::endl;
     m_data->Stores[m_storename.c_str()]->Set(m_objectname, object);
-    std::cout << "HERE" << std::endl;
     // std::cout << "Failed reading" << m_objectname << std::endl;
-    object.Print();
+    // object.Print();
     return true;
 }
 #endif

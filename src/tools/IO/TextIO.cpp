@@ -1,6 +1,7 @@
 #include "TextIO.h"
 
 // Add the header to your object below
+#include "XString.h"
 #include "TestObj.h"
 
 /** @brief Method that transforms a const char into int (useful for switch logic) */
@@ -30,7 +31,8 @@ bool TextIO::Initialise(std::string configfile, DataModel &data)
     m_variables.Get("objecttype", m_objecttype);
     std::string mode;
     m_variables.Get("mode", mode);
-    if (mode.c_str() == "write")
+    std::cout << "mode: " << mode.c_str() << std::endl;
+    if (std::strcmp(mode.c_str(), "write") == 0)
     {
         std::cout << "Writing data mode" << std::endl;
         m_mode = IOMode::Write;
@@ -40,7 +42,8 @@ bool TextIO::Initialise(std::string configfile, DataModel &data)
     {
         std::cout << "Reading data mode" << std::endl;
         m_mode = IOMode::Read;
-        m_infile.open(m_filename.c_str());
+        m_infile.open(m_filename.c_str(), std::ios::in);
+        m_data->Stores[m_storename.c_str()] = new BoostStore(false, 2);
     }
 
     if (m_filename == "")
@@ -55,7 +58,7 @@ bool TextIO::Initialise(std::string configfile, DataModel &data)
     }
     if (m_storename == "")
     {
-        std::cout << "Error: No object type given for TextIO" << std::endl;
+        std::cout << "Error: No store name given for TextIO" << std::endl;
         return false;
     }
     if (m_objecttype == "")
@@ -82,14 +85,22 @@ bool TextIO::Execute()
 
 bool TextIO::Read()
 {
-    std::cout << "REading" << std::endl;
-    if (m_infile.eof()){
-        std::cout << "End of file reachec" << std::endl;
+    std::cout << "Reading" << std::endl;
+    if (m_infile.eof())
+    {
+        std::cout << "End of file reached" << std::endl;
         return true;
     }
     switch (str2int(m_objecttype.c_str()))
     {
         // Add your object below
+    case (str2int("std::string")):
+    {
+        // Special treatment for std::string
+        // return ReadStringFromFile();
+        return ReadFromFile<std::string>();
+        break;
+    }
     case (str2int("TestObj")):
     {
         return ReadFromFile<TestObj>();
@@ -101,6 +112,7 @@ bool TextIO::Read()
         return false;
     }
     }
+    std::cout << "Done reading" << std::endl;
     return true;
 }
 
@@ -109,6 +121,12 @@ bool TextIO::Write()
     switch (str2int(m_objecttype.c_str()))
     {
         // Add your object below
+    case (str2int("std::string")):
+    {
+        // return SaveToFile<std::string>();
+        return SaveStringIntoFile();
+        break;
+    }
     case (str2int("TestObj")):
     {
         return SaveToFile<TestObj>();
@@ -135,5 +153,37 @@ bool TextIO::Finalise()
 
     m_infile.close();
     m_outfile.close();
+    return true;
+}
+
+bool TextIO::ReadBinaryFromFile()
+{
+    
+    return true;
+}
+
+// bool TextIO::ReadStringFromFile()
+// {
+//     std::cout << "ReadStringFromFile" << std::endl;
+//     std::string value;
+//     std::getline(m_infile, value, '\n');
+//     std::cout << value << std::endl;
+//     XString object;
+//     object.SetString(value);
+//     object.Print();
+//     m_data->Stores[m_storename.c_str()]->Set(m_objectname, object);
+//     std::cout << "ReadStringFromFile" << std::endl;
+//     std::cout << "Failed reading" << m_objectname << std::endl;
+//     return true;
+// }
+
+bool TextIO::SaveStringIntoFile()
+{
+    std::string object;
+    if (!m_data->Stores[m_storename.c_str()]->Get(m_objectname, object))
+    {
+        std::cout << "Failed writing" << m_objectname << std::endl;
+    };
+    m_outfile << object << "\n";
     return true;
 }
