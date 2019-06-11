@@ -170,7 +170,8 @@ void* Reader::ListenThread(void* arg){
 	if((outitems[0].revents & ZMQ_POLLOUT)) IThread.send(message);
 	  
 	else pthread_exit(NULL);
-            
+  data=new std::vector<double>;     
+      
       }
 
     }
