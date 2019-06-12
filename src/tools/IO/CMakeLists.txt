@@ -6,6 +6,7 @@
 set( IOTools_DICT_HEADERFILES
     MemphynoRawReader.h
     TextIO.h
+    Reader.h
 )
 
 set( IOTools_HEADERFILES
@@ -15,6 +16,7 @@ set( IOTools_HEADERFILES
 set( IOTools_SOURCEFILES
     MemphynoRawReader.cpp
     TextIO.cpp
+    Reader.cpp
 )
 
 

@@ -18,7 +18,7 @@ pbuilder_prepare_project()
 
 set( ToolDAQ_BUILD_MAIN_EXE OFF )
 pbuilder_add_submodule( ToolDAQFramework ToolDAQFramework )
-set( CosmicCrisp_ENABLE_EXECUTABLES OFF )
+set( CosmicCrisp_ENABLE_EXECUTABLES ON )
 pbuilder_add_submodule( CosmicCrisp CosmicCrisp )
 
 set( Scarab_BUILD_CODEC_JSON OFF CACHE BOOL "No coded" FORCE)
