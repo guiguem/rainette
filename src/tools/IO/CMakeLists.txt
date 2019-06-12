@@ -4,6 +4,7 @@
 
 
 set( IOTools_DICT_HEADERFILES
+    Reader.h
     TextWriter.h
 )
 
@@ -12,6 +13,7 @@ set( IOTools_HEADERFILES
 )
 
 set( IOTools_SOURCEFILES
+    Reader.cpp
     TextWriter.cpp
 )
 
