@@ -28,7 +28,7 @@ public:
     }
     // Needed so we can write it into a text file (via TextWriterTool)
     friend std::ostream &operator<<(std::ostream &out, const TestObj &obj);
-    friend void &operator>>(std::ostream &out, TestObj obj);
+    // friend void &operator>>(std::ostream &out, TestObj obj);
 
 protected:
     double aValue;
