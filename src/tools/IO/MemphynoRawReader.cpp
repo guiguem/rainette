@@ -82,8 +82,3 @@ bool MemphynoRawReader::Finalise()
     m_infile.close();
     return true;
 }
-
-// return tru;
-// e:;awReader::Finalise() {
-//         return true;
-//     };
