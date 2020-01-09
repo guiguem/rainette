@@ -31,7 +31,6 @@ bool TextIO::Initialise(std::string configfile, DataModel &data)
     m_variables.Get("objecttype", m_objecttype);
     std::string mode;
     m_variables.Get("mode", mode);
-    std::cout << "mode: " << mode.c_str() << std::endl;
     if (std::strcmp(mode.c_str(), "write") == 0)
     {
         std::cout << "Writing data mode" << std::endl;
@@ -93,17 +92,26 @@ bool TextIO::Read()
     }
     switch (str2int(m_objecttype.c_str()))
     {
-        // Add your object below
+    // Add your object below
     case (str2int("std::string")):
     {
         // Special treatment for std::string
-        // return ReadStringFromFile();
         return ReadFromFile<std::string>();
+        break;
+    }
+    case (str2int("std::vector<std::string>")):
+    {
+        return ReadVectorFromFile<std::string>();
         break;
     }
     case (str2int("TestObj")):
     {
         return ReadFromFile<TestObj>();
+        break;
+    }
+    case (str2int("vector<TestObj>")):
+    {
+        return ReadVectorFromFile<TestObj>();
         break;
     }
     default:
@@ -118,13 +126,19 @@ bool TextIO::Read()
 
 bool TextIO::Write()
 {
+    std::cout << "Writing" << std::endl;
     switch (str2int(m_objecttype.c_str()))
     {
         // Add your object below
     case (str2int("std::string")):
     {
-        // return SaveToFile<std::string>();
         return SaveStringIntoFile();
+        break;
+    }
+    case (str2int("std::vector<std::string>")):
+    {
+        std::cout << "Hello" << std::endl;
+        return SaveVectorStringIntoFile();
         break;
     }
     case (str2int("TestObj")):
@@ -156,13 +170,7 @@ bool TextIO::Finalise()
     return true;
 }
 
-bool TextIO::ReadBinaryFromFile()
-{
-    
-    return true;
-}
-
-// bool TextIO::ReadStringFromFile()
+// bool TextIO::ReadVectorStringFromFile()
 // {
 //     std::cout << "ReadStringFromFile" << std::endl;
 //     std::string value;
@@ -182,8 +190,22 @@ bool TextIO::SaveStringIntoFile()
     std::string object;
     if (!m_data->Stores[m_storename.c_str()]->Get(m_objectname, object))
     {
-        std::cout << "Failed writing" << m_objectname << std::endl;
+        std::cout << "Failed getting" << m_objectname << " from store" << std::endl;
     };
     m_outfile << object << "\n";
+    return true;
+}
+bool TextIO::SaveVectorStringIntoFile()
+{
+    std::cout << "HREE" << std::endl;
+    std::vector<std::string> avector;
+    if (!m_data->Stores[m_storename.c_str()]->Get(m_objectname, avector))
+    {
+        std::cout << "Failed getting <" << m_objectname << "> of type <" << m_objecttype << "> from store" << std::endl;
+    };
+    for (std::vector<std::string>::iterator iter = avector.begin(); iter != avector.end(); ++iter)
+    {
+        m_outfile << (*iter) << "\n";
+    }
     return true;
 }

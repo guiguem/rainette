@@ -36,7 +36,7 @@ struct Listen_thread_args
  @brief
  @details
 */
-class Reader:  public Tool::Registrar<Reader>
+class Reader : public Tool::Registrar<Reader>
 {
 
 public:

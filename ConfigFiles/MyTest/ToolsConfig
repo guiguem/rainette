@@ -1,4 +1,7 @@
 MyTool MyTool  ConfigFiles/MyTest/MyToolConfig
 #DummyTool DummyTool ConfigFiles/MyTest/MyToolConfig
-TextIO TextIO ConfigFiles/MyTest/TextWriter
+ObjTextReader TextIO ConfigFiles/MyTest/ObjTextReader
+ObjTextWriter TextIO ConfigFiles/MyTest/ObjTextWriter
+StringTextReader TextIO ConfigFiles/MyTest/StringTextReader
+StringTextWriter TextIO ConfigFiles/MyTest/StringTextWriter
 Logger Logger ConfigFiles/MyTest/LoggerConfig
