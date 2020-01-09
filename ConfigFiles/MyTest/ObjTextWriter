@@ -1,0 +1,9 @@
+# Dummy config file
+
+verbose 9
+mode write
+filename afile_written.txt
+storename DataName
+objectname TestObj
+#objecttype TestObj
+objecttype vector<TestObj>
