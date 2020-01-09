@@ -20,6 +20,9 @@ class RootFileManager : public Tool::Registrar<RootFileManager>
     bool Finalise() override;
 
   private:
+    bool PrepareBranches();
+
+  private:
     int m_verbose;
     std::string m_x;
     TFile* foutput;
