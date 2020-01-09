@@ -1,7 +1,6 @@
 #include "TextIO.h"
 
 // Add the header to your object below
-#include "XString.h"
 #include "TestObj.h"
 
 /** @brief Method that transforms a const char into int (useful for switch logic) */
@@ -101,7 +100,8 @@ bool TextIO::Read()
     }
     case (str2int("std::vector<std::string>")):
     {
-        return ReadVectorFromFile<std::string>();
+        // return ReadVectorFromFile<std::string>();
+        return ReadVectorStringFromFile();
         break;
     }
     case (str2int("TestObj")):
@@ -129,7 +129,7 @@ bool TextIO::Write()
     std::cout << "Writing" << std::endl;
     switch (str2int(m_objecttype.c_str()))
     {
-        // Add your object below
+    // Add your object below
     case (str2int("std::string")):
     {
         return SaveStringIntoFile();
@@ -137,7 +137,6 @@ bool TextIO::Write()
     }
     case (str2int("std::vector<std::string>")):
     {
-        std::cout << "Hello" << std::endl;
         return SaveVectorStringIntoFile();
         break;
     }
@@ -170,20 +169,16 @@ bool TextIO::Finalise()
     return true;
 }
 
-// bool TextIO::ReadVectorStringFromFile()
-// {
-//     std::cout << "ReadStringFromFile" << std::endl;
-//     std::string value;
-//     std::getline(m_infile, value, '\n');
-//     std::cout << value << std::endl;
-//     XString object;
-//     object.SetString(value);
-//     object.Print();
-//     m_data->Stores[m_storename.c_str()]->Set(m_objectname, object);
-//     std::cout << "ReadStringFromFile" << std::endl;
-//     std::cout << "Failed reading" << m_objectname << std::endl;
-//     return true;
-// }
+bool TextIO::ReadVectorStringFromFile()
+{
+    std::string value;
+    std::vector<std::string> v_string;
+    while (std::getline(m_infile, value, '\n')){
+        v_string.push_back(value);
+    };
+    m_data->Stores[m_storename.c_str()]->Set(m_objectname, v_string);
+    return true;
+}
 
 bool TextIO::SaveStringIntoFile()
 {
@@ -197,15 +192,15 @@ bool TextIO::SaveStringIntoFile()
 }
 bool TextIO::SaveVectorStringIntoFile()
 {
-    std::cout << "HREE" << std::endl;
     std::vector<std::string> avector;
     if (!m_data->Stores[m_storename.c_str()]->Get(m_objectname, avector))
     {
         std::cout << "Failed getting <" << m_objectname << "> of type <" << m_objecttype << "> from store" << std::endl;
     };
+
     for (std::vector<std::string>::iterator iter = avector.begin(); iter != avector.end(); ++iter)
     {
-        m_outfile << (*iter) << "\n";
+        m_outfile << (*iter).c_str() << "\n";
     }
     return true;
 }
