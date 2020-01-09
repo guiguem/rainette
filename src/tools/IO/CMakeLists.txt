@@ -5,7 +5,9 @@
 
 set( IOTools_DICT_HEADERFILES
     RootFileManager.h
-    TextWriter.h
+    MemphynoRawReader.h
+    TextIO.h
+    Reader.h
 )
 
 set( IOTools_HEADERFILES
@@ -14,7 +16,9 @@ set( IOTools_HEADERFILES
 
 set( IOTools_SOURCEFILES
     RootFileManager.cpp
-    TextWriter.cpp
+    MemphynoRawReader.cpp
+    TextIO.cpp
+    Reader.cpp
 )
 
 

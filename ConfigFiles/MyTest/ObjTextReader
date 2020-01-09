@@ -1,7 +1,8 @@
 # Dummy config file
 
-verbose 1
+verbose 9
 filename afile.txt
 storename DataName
 objectname TestObj
-objecttype TestObj
+#objecttype TestObj
+objecttype vector<TestObj>

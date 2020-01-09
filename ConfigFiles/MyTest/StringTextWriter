@@ -1,0 +1,8 @@
+# Dummy config file
+
+verbose 9
+mode write
+filename stringfile_written.txt
+storename StringName
+objectname string
+objecttype std::vector<std::string>

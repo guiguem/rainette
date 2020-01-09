@@ -1,0 +1,7 @@
+# Dummy config file
+
+verbose 9
+filename stringfile.txt
+storename StringName
+objectname string
+objecttype std::vector<std::string>
