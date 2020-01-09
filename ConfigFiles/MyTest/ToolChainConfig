@@ -24,7 +24,7 @@ service_kick_sec 60
 Tools_File ConfigFiles/MyTest/ToolsConfig
 
 ##### Run Type #####
-Inline 1
+Inline 3
 Interactive 0
 Remote 0
 

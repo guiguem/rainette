@@ -81,6 +81,8 @@ bool TextIO::ReadVectorFromFile()
       v_object.push_back(object);
     }
     m_data->Stores[m_storename.c_str()]->Set(m_objectname, v_object);
+    m_infile.clear( );
+    m_infile.seekg(0, std::ios::beg);
     return true;
 }
 #endif

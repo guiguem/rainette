@@ -177,6 +177,8 @@ bool TextIO::ReadVectorStringFromFile()
         v_string.push_back(value);
     };
     m_data->Stores[m_storename.c_str()]->Set(m_objectname, v_string);
+    m_infile.clear();
+    m_infile.seekg(0, std::ios::beg);
     return true;
 }
 
