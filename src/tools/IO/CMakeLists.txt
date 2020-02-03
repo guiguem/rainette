@@ -5,6 +5,7 @@
 
 set( IOTools_DICT_HEADERFILES
     RootFileManager.h
+    IOBaseTool.h
     MemphynoRawReader.h
     TextIO.h
     Reader.h
@@ -16,6 +17,7 @@ set( IOTools_HEADERFILES
 
 set( IOTools_SOURCEFILES
     RootFileManager.cpp
+    IOBaseTool.cpp
     MemphynoRawReader.cpp
     TextIO.cpp
     Reader.cpp

@@ -4,6 +4,7 @@
 #include <iostream>     // for ostream, string, ostringstream
 #include <vector>       // for ostream, string, ostringstream
 #include "BoostStore.h" // for BoostStore
+#include "Factory.h"    // for Factory
 namespace boost
 {
 namespace serialization
@@ -12,7 +13,7 @@ class access;
 }
 } // namespace boost
 
-class TestObj : public SerialisableObject::Registrar<TestObj>
+class TestObj : public SerialisableObject
 {
 
     friend class boost::serialization::access;
@@ -58,6 +59,9 @@ protected:
     }
 };
 
+REGISTER_FACTORY(SerialisableObject,TestObj)
+
+
 std::istream &operator>>(std::istream &in, TestObj &obj)
 {
     in >> obj.aValue >> obj.bValue;
@@ -78,5 +82,7 @@ std::ostream &operator<<(std::ostream &out, std::vector<TestObj> &avector)
     }
     return out;
 }
+
+
 
 #endif

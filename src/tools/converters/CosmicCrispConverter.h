@@ -10,10 +10,11 @@
 // #include "RainetteDataModel.h"
 class RainetteDataModel;
 
-class CosmicCrispConverter : public Tool::Registrar<CosmicCrispConverter>
+class CosmicCrispConverter : public Tool
 {
   public:
     CosmicCrispConverter(std::string x) : m_x(x) {}
+    CosmicCrispConverter() {}
 
   public:
     bool Initialise(std::string configfile, DataModel &data) override;
@@ -25,5 +26,8 @@ class CosmicCrispConverter : public Tool::Registrar<CosmicCrispConverter>
     std::string m_x;
 
 };
+
+REGISTER_FACTORY(Tool,CosmicCrispConverter)
+
 
 #endif

@@ -11,73 +11,92 @@ constexpr unsigned int str2int(const char *str, int h = 0)
 
 // template <typename T> using VECTOR = std::vector<T>;
 
-bool TextIO::Initialise(std::string configfile, DataModel &data)
-{
+// bool TextIO::Initialise(std::string configfile, DataModel &data)
+// {
 
-    if (configfile != "")
-        m_variables.Initialise(configfile);
-    else
-    {
-        exit(1);
-    }
-    //m_variables.Print();
+//     if (configfile != "")
+//         m_variables.Initialise(configfile);
+//     else
+//     {
+//         exit(1);
+//     }
+//     //m_variables.Print();
 
-    m_data = &data;
-    m_variables.Get("verbose", m_verbose);
-    m_variables.Get("filename", m_filename);
-    m_variables.Get("storename", m_storename);
-    m_variables.Get("objectname", m_objectname);
-    m_variables.Get("objecttype", m_objecttype);
-    std::string mode;
-    m_variables.Get("mode", mode);
-    if (std::strcmp(mode.c_str(), "write") == 0)
+//     m_data = &data;
+//     m_variables.Get("verbose", m_verbose);
+//     m_variables.Get("filename", m_filename);
+//     m_variables.Get("storename", m_storename);
+//     m_variables.Get("objectname", m_objectname);
+//     m_variables.Get("objecttype", m_objecttype);
+//     std::string mode;
+//     m_variables.Get("mode", mode);
+//     if (std::strcmp(mode.c_str(), "write") == 0)
+//     {
+//         std::cout << "Writing data mode" << std::endl;
+//         m_mode = IOMode::Write;
+//         m_outfile.open(m_filename.c_str());
+//     }
+//     else
+//     {
+//         std::cout << "Reading data mode" << std::endl;
+//         m_mode = IOMode::Read;
+//         m_infile.open(m_filename.c_str(), std::ios::in);
+//         m_data->Stores[m_storename.c_str()] = new BoostStore(false, 2);
+//     }
+
+//     if (m_filename == "")
+//     {
+//         std::cout << "Error: No output file name given for TextIO" << std::endl;
+//         return false;
+//     }
+//     if (m_objectname == "")
+//     {
+//         std::cout << "Error: No object name given for TextIO" << std::endl;
+//         return false;
+//     }
+//     if (m_storename == "")
+//     {
+//         std::cout << "Error: No store name given for TextIO" << std::endl;
+//         return false;
+//     }
+//     if (m_objecttype == "")
+//     {
+//         std::cout << "Error: No object type given for TextIO" << std::endl;
+//         return false;
+//     }
+
+//     return true;
+// }
+
+// bool TextIO::Execute()
+// {
+//     if (m_mode == IOMode::Read)
+//     {
+//         return Read();
+//     }
+//     else if (m_mode == IOMode::Write)
+//     {
+//         return Write();
+//     }
+//     return true;
+// }
+
+bool TextIO::OpenFile(){
+    if (m_mode == IOMode::Write)
     {
-        std::cout << "Writing data mode" << std::endl;
-        m_mode = IOMode::Write;
         m_outfile.open(m_filename.c_str());
     }
-    else
+    else if (m_mode == IOMode::Read)
     {
-        std::cout << "Reading data mode" << std::endl;
-        m_mode = IOMode::Read;
         m_infile.open(m_filename.c_str(), std::ios::in);
-        m_data->Stores[m_storename.c_str()] = new BoostStore(false, 2);
     }
-
-    if (m_filename == "")
-    {
-        std::cout << "Error: No output file name given for TextIO" << std::endl;
-        return false;
-    }
-    if (m_objectname == "")
-    {
-        std::cout << "Error: No object name given for TextIO" << std::endl;
-        return false;
-    }
-    if (m_storename == "")
-    {
-        std::cout << "Error: No store name given for TextIO" << std::endl;
-        return false;
-    }
-    if (m_objecttype == "")
-    {
-        std::cout << "Error: No object type given for TextIO" << std::endl;
-        return false;
-    }
-
     return true;
 }
 
-bool TextIO::Execute()
-{
-    if (m_mode == IOMode::Read)
-    {
-        return Read();
-    }
-    else if (m_mode == IOMode::Write)
-    {
-        return Write();
-    }
+bool TextIO::CloseFile(){
+
+    m_infile.close();
+    m_outfile.close();
     return true;
 }
 
@@ -161,13 +180,13 @@ bool TextIO::Write()
     return false;
 }
 
-bool TextIO::Finalise()
-{
+// bool TextIO::Finalise()
+// {
 
-    m_infile.close();
-    m_outfile.close();
-    return true;
-}
+//     m_infile.close();
+//     m_outfile.close();
+//     return true;
+// }
 
 bool TextIO::ReadVectorStringFromFile()
 {
