@@ -2,50 +2,43 @@
 #define TextIO_H
 
 #include <iostream> // for string, ofstream
-#include "Tool.h"   // for Tool
+#include "IOBaseTool.h"   // for IOBaseTool
 class DataModel;
 
-enum IOMode
-{
-    Read = 0,
-    Write
-};
-
-class TextIO : public Tool::Registrar<TextIO>
+class TextIO : public IOBaseTool
 {
 public:
-    TextIO(std::string x) : m_x(x) {}
+    TextIO() : IOBaseTool() {}
+    TextIO(std::string x) : IOBaseTool(x) {}
 
-public:
-    bool Initialise(std::string configfile, DataModel &data) override;
-    bool Execute() override; // = 0;
-    bool Finalise() override;
+// public:
+    // bool Initialise(std::string configfile, DataModel &data) override;
+    // bool Execute() override; // = 0;
+    // bool Finalise() override;
 
 private:
-    bool Read();
-    bool Write();
+    bool Read() override;
+    bool Write() override;
+    bool OpenFile() override;
+    bool CloseFile() override;
+    
     template <typename T>
     bool ReadFromFile();
     template <typename T>
     bool ReadVectorFromFile();
+    template <typename T>
+    bool SaveToFile();
 
     bool ReadVectorStringFromFile(); ///< A special function because reading std::string from a file is weird...
     bool SaveStringIntoFile(); ///< A special function because writing std::string from a file is weird...
     bool SaveVectorStringIntoFile(); ///< A special function because writing std::string from a file is weird...
-    template <typename T>
-    bool SaveToFile();
 
 private:
-    int m_verbose;
-    std::string m_x;
-    std::string m_filename;
-    std::string m_objectname;
-    std::string m_objecttype;
-    std::string m_storename;
     std::ofstream m_outfile;
     std::ifstream m_infile;
-    IOMode m_mode;
 };
+
+REGISTER_FACTORY(Tool,TextIO)
 
 template <typename T>
 bool TextIO::SaveToFile()

@@ -1,8 +1,9 @@
 #include "Tool.h"
 
-class Wrench : public Tool::Registrar<Wrench>
+class Wrench : public Tool
 {
   public:
+    Wrench() {}
     Wrench(std::string x) : m_x(x) {}
 
     void makeNoise(); // { std::cerr << "Cat: " << m_x << "\n"; }
@@ -15,3 +16,5 @@ class Wrench : public Tool::Registrar<Wrench>
     std::string m_x;
     int m_verbose;
 };
+
+REGISTER_FACTORY(Tool,Wrench)  

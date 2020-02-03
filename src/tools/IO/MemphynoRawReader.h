@@ -2,16 +2,16 @@
 #define MemphynoRawReader_H
 
 #include <iostream> // for string, ofstream
-#include "Tool.h"   // for Tool
+#include "IOBaseTool.h"   // for Tool
 class DataModel;
 namespace CosmicCrisp{
     class HodoscopeIO;
 };
 
-class MemphynoRawReader : public Tool::Registrar<MemphynoRawReader>
+class MemphynoRawReader : public IOBaseTool
 {
 public:
-    MemphynoRawReader(std::string x) : m_x(x) {}
+    MemphynoRawReader() {}
 
 public:
     bool Initialise(std::string configfile, DataModel &data) override;
@@ -30,4 +30,6 @@ private:
     std::string m_x;
 
 };
+
+REGISTER_FACTORY(Tool,MemphynoRawReader)
 #endif
