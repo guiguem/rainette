@@ -9,22 +9,16 @@ bool MyTool::Initialise(std::string configfile, DataModel &data)
     {
         exit(1);
     }
-    //m_variables.Print();
+    // m_variables.Print();
 
     m_data = &data;
     m_variables.Get("verbose", m_verbose);
 
-    ////// Save some data to inter Tool/module persistant store
-    std::string configvalue = "important info";
+    // Save some data to inter Tool/module persistant store
     int a = 5;
     double b = 5.4;
-    // TestObj testobj;
-    // m_data->CStore.Set("name", configvalue);
-    // m_data->CStore.Set("a", a);
-    // m_data->CStore.Set("b", b);
-    // m_data->CStore.Set("TestObj", testobj);
 
-    /////Set up a new store with multiple entries
+    // Set up a new store with multiple entries
     m_data->Stores["DataName"] = new BoostStore(false, 2);
 
     // set multi entry header info
@@ -42,13 +36,10 @@ bool MyTool::Execute()
 
     m_data->Log->Log("test 2", 2, m_verbose);
 
-    //// Generate random data
+    // Generate random data
     int a = rand() % 10 + 1;
     double b = (rand() % 1000 + 1) / 10.0;
-    std::string c = "stuff";
-    std::cout << a << std::endl;
     
-    // SerialisableObject::Registrar<TestObj>* testobj = new TestObj(std::string("DataName"), 1.2, 34.5);
     TestObj* testobj = new TestObj(std::string("DataName"), 1.2, 34.5);
     std::vector<TestObj> vectorobj;
     testobj->SetA(1.0);

@@ -10,9 +10,10 @@
 class RainetteDataModel;
 
 
-class MyTool : public Tool::Registrar<MyTool>
+class MyTool : public Tool
 {
 public:
+    MyTool(){}
     MyTool(std::string x) : m_x(x) {}
 
 public:
@@ -24,5 +25,7 @@ private:
     int m_verbose;
     std::string m_x;
 };
+
+REGISTER_FACTORY(Tool,MyTool)
 
 #endif

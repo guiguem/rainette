@@ -36,11 +36,11 @@ struct Listen_thread_args
  @brief
  @details
 */
-class Reader : public Tool::Registrar<Reader>
+class Reader : public Tool
 {
 
 public:
-    Reader();
+    Reader(){};
     bool Initialise(std::string configfile, DataModel &data);
     bool Execute();
     bool Finalise();
@@ -61,5 +61,7 @@ private:
     int Thread_Send_Wait;
     int Data_Batch_Size;
 };
+
+REGISTER_FACTORY(Tool,Reader)
 
 #endif

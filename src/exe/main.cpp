@@ -5,13 +5,13 @@ NOTE: WE COULD ALSO USE THE FRAMEWORK ONE IN CMAKELISTS
 
 #include <string>
 #include "ToolChain.h"
-#include "DummyTool.h"
+#include "Factory.h"
 #include <iostream>
 
 int main(int argc, char *argv[])
 {
+	Factory<Tool>::showClasses("Tool");
 
-    std::cout << "Main here" << std::endl;
     std::string conffile;
     if (argc == 1)
         conffile = "configfiles/Dummy/ToolChainConfig";
