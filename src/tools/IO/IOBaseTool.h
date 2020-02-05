@@ -2,6 +2,7 @@
 #define IOBaseTool_H
 
 #include <iostream> // for string, ofstream
+#include "Factory.h" // for Factory
 #include "Tool.h"   // for Tool
 class DataModel;
 

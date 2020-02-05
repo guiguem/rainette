@@ -1,4 +1,5 @@
 #include "Tool.h"
+#include "Factory.h" // for Factory
 
 class Wrench : public Tool
 {

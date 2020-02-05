@@ -2,6 +2,7 @@
 #define MemphynoRawReader_H
 
 #include <iostream> // for string, ofstream
+#include "Factory.h" // for Factory
 #include "IOBaseTool.h"   // for Tool
 class DataModel;
 namespace CosmicCrisp{
