@@ -4,7 +4,8 @@
 #include <iostream>     // for ostream, string, ostringstream
 #include <vector>       // for ostream, string, ostringstream
 #include "BoostStore.h" // for BoostStore
-#include "Factory.h"    // for Factory
+#include "Factory.h" // for Factory
+#include "SerialisableObject.h" // for BoostStore
 namespace boost
 {
 namespace serialization

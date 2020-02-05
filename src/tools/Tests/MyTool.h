@@ -4,8 +4,10 @@
 #include <string>
 #include <iostream>
 
+#include "Factory.h" // for Factory
 #include "Tool.h"
 #include "TestObj.h"
+
 
 class RainetteDataModel;
 

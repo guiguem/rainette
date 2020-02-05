@@ -1,8 +1,9 @@
 #ifndef TextIO_H
 #define TextIO_H
 
-#include <iostream> // for string, ofstream
-#include "IOBaseTool.h"   // for IOBaseTool
+#include <iostream>     // for string, ofstream
+#include "Factory.h"    // for Factory
+#include "IOBaseTool.h" // for IOBaseTool
 class DataModel;
 
 class TextIO : public IOBaseTool
@@ -11,7 +12,7 @@ public:
     TextIO() : IOBaseTool() {}
     TextIO(std::string x) : IOBaseTool(x) {}
 
-// public:
+    // public:
     // bool Initialise(std::string configfile, DataModel &data) override;
     // bool Execute() override; // = 0;
     // bool Finalise() override;
@@ -21,7 +22,7 @@ private:
     bool Write() override;
     bool OpenFile() override;
     bool CloseFile() override;
-    
+
     template <typename T>
     bool ReadFromFile();
     template <typename T>
@@ -30,7 +31,7 @@ private:
     bool SaveToFile();
 
     bool ReadVectorStringFromFile(); ///< A special function because reading std::string from a file is weird...
-    bool SaveStringIntoFile(); ///< A special function because writing std::string from a file is weird...
+    bool SaveStringIntoFile();       ///< A special function because writing std::string from a file is weird...
     bool SaveVectorStringIntoFile(); ///< A special function because writing std::string from a file is weird...
 
 private:
@@ -38,7 +39,7 @@ private:
     std::ifstream m_infile;
 };
 
-REGISTER_FACTORY(Tool,TextIO)
+REGISTER_FACTORY(Tool, TextIO)
 
 template <typename T>
 bool TextIO::SaveToFile()
@@ -70,11 +71,12 @@ bool TextIO::ReadVectorFromFile()
 {
     std::vector<T> v_object;
     T object;
-    while (m_infile >> object){
-      v_object.push_back(object);
+    while (m_infile >> object)
+    {
+        v_object.push_back(object);
     }
     m_data->Stores[m_storename.c_str()]->Set(m_objectname, v_object);
-    m_infile.clear( );
+    m_infile.clear();
     m_infile.seekg(0, std::ios::beg);
     return true;
 }

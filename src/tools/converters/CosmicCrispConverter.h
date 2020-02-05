@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 
-#include "Factory.h"
+#include "Factory.h" // for Factory
 #include "Tool.h"
 
 #include "HodoscopeData.h"

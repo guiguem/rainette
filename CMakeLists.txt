@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.1)
 
 cmake_policy( SET CMP0048 NEW ) # version in project()
+cmake_policy( SET CMP0079 NEW ) # version in project()
 project( Rainette VERSION 1.1.6 )
 
 list( APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/ToolDAQFramework/cmake )
@@ -16,7 +17,7 @@ pbuilder_prepare_project()
 # Submodules
 #############
 
-set( ToolDAQ_BUILD_MAIN_EXE OFF )
+set( ToolDAQ_BUILD_MAIN_EXE ON )
 pbuilder_add_submodule( ToolDAQFramework ToolDAQFramework )
 set( CosmicCrisp_ENABLE_EXECUTABLES ON )
 pbuilder_add_submodule( CosmicCrisp CosmicCrisp )
@@ -55,7 +56,7 @@ include_directories (BEFORE
     ${PROJECT_SOURCE_DIR}/src/converters
     ${PROJECT_SOURCE_DIR}/src/tools/IO
     ${PROJECT_SOURCE_DIR}/src/tools/tests
-    ${PROJECT_SOURCE_DIR}/src/exe
+    # ${PROJECT_SOURCE_DIR}/src/exe
 )
 
 # add_subdirectory (RainetteDataModels)
@@ -63,6 +64,10 @@ add_subdirectory (src/data)
 add_subdirectory (src/tools/converters)
 add_subdirectory (src/tools/tests)
 add_subdirectory (src/tools/IO)
-add_subdirectory (src/exe)
+# add_subdirectory (src/exe)
+
+# Link the ToolDAQFramework executable to all the new libraries containing tools
+target_link_libraries(main IOTools TestsTools)
+
 
 pbuilder_variables_for_parent()
