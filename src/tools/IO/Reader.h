@@ -11,6 +11,7 @@ Author Benjamin Richards (b.richards@qmul.ac.uk)
 #include <iostream>
 #include <vector>
 
+#include "Factory.h" // for Factory
 #include "Tool.h"
 
 struct Listen_thread_args

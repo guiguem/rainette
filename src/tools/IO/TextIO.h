@@ -2,6 +2,7 @@
 #define TextIO_H
 
 #include <iostream> // for string, ofstream
+#include "Factory.h" // for Factory
 #include "IOBaseTool.h"   // for IOBaseTool
 class DataModel;
 
