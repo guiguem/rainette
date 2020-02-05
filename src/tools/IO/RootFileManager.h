@@ -7,11 +7,13 @@
 #include "TTree.h"
 
 #include "CardData.h"
+#include "Factory.h"
 #include "Tool.h"
 
-class RootFileManager : public Tool::Registrar<RootFileManager>
+class RootFileManager : public Tool
 {
   public:
+    RootFileManager() {}
     RootFileManager(std::string x) : m_x(x) {}
 
   public:
@@ -29,5 +31,7 @@ class RootFileManager : public Tool::Registrar<RootFileManager>
     CardData localcard;
 
 };
+
+REGISTER_FACTORY(Tool,RootFileManager)
 
 #endif

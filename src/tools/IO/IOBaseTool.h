@@ -1,8 +1,9 @@
 #ifndef IOBaseTool_H
 #define IOBaseTool_H
 
-#include <iostream> // for string, ofstream
-#include "Tool.h"   // for Tool
+#include <iostream>  // for string, ofstream
+#include "Factory.h" // for Factory
+#include "Tool.h"    // for Tool
 class DataModel;
 
 enum IOMode
@@ -14,7 +15,7 @@ enum IOMode
 class IOBaseTool : public Tool
 {
 public:
-    IOBaseTool(){}
+    IOBaseTool() {}
     IOBaseTool(std::string x) : m_x(x) {}
 
 public:
@@ -23,10 +24,10 @@ public:
     bool Finalise() override;
 
 private:
-    virtual bool OpenFile() {return false;}; ///< Open file depending on the mode; Implemented in derived class
-    virtual bool CloseFile() {return false;}; ///< Close file; Implemented in derived class)
-    virtual bool Read(); ///< Run during Execute() depending on IOMode; Implemented in derived class
-    virtual bool Write(); ///< Run during Execute() depending on IOMode; Implemented in derived class
+    virtual bool OpenFile() { return false; };  ///< Open file depending on the mode; Implemented in derived class
+    virtual bool CloseFile() { return false; }; ///< Close file; Implemented in derived class)
+    virtual bool Read();                        ///< Run during Execute() depending on IOMode; Implemented in derived class
+    virtual bool Write();                       ///< Run during Execute() depending on IOMode; Implemented in derived class
 
 protected:
     int m_verbose;
@@ -38,6 +39,6 @@ protected:
     IOMode m_mode;
 };
 
-REGISTER_FACTORY(Tool,IOBaseTool)
+REGISTER_FACTORY(Tool, IOBaseTool)
 
 #endif

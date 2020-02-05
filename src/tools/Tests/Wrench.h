@@ -1,3 +1,4 @@
+#include "Factory.h"
 #include "Tool.h"
 
 class Wrench : public Tool

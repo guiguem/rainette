@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 
+#include "Factory.h"
 #include "Tool.h"
 
 #include "HodoscopeData.h"
